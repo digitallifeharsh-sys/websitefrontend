@@ -20,7 +20,6 @@ export default function Hero() {
       <div className="absolute top-[20%] right-[20%] w-[30vw] h-[30vw] bg-[#F5F3FF] rounded-full blur-[100px] opacity-60 pointer-events-none" />
 
       {/* Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.015] mix-blend-overlay pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center min-h-screen pt-24 pb-16 lg:pt-0 lg:pb-0">
         
