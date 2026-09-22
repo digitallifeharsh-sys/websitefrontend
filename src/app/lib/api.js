@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://15.252.146.207:5000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 const getAccessToken = () =>
   typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
