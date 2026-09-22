@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, LockKeyhole, PlayCircle, ShieldCheck, Smartphone } from "lucide-react";
-import { apiJson, API_URL } from "../../lib/api";
+import { apiJson } from "../../lib/api";
 import { DetailSkeleton } from "../../components/PageSkeleton";
 
 export default function CourseDetailPage() {
