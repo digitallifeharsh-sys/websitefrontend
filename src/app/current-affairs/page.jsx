@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://localhost:5000/api/v1";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export default function CurrentAffairsPage() {
     const router = useRouter();
@@ -30,7 +30,7 @@ export default function CurrentAffairsPage() {
             }
 
             const response = await fetch(
-                `${API_URL}/current-affairs?${params.toString()}`,
+                `${API_URL}/api/v1/current-affairs?${params.toString()}`,
                 {
                     method: "GET",
                     headers: {

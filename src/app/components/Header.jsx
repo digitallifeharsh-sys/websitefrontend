@@ -247,6 +247,10 @@ export default function Header() {
       link: "/courses",
     },
     {
+      name: "My Courses",
+      link: "/my-courses",
+    },
+    {
       name: "Test Series",
       link: "/test-series",
     },
