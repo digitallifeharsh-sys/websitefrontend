@@ -103,7 +103,7 @@ export default function MyCoursesPage() {
                     {course.name || course.courseName || course.title || "Purchased Course"}
                   </h2>
                   <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {course.description?.short || "Your purchased course is unlocked."}
+                    {course.shortDescription || "Your purchased course is unlocked."}
                   </p>
 
                   <div className="mt-5 rounded-2xl border border-indigo-100 bg-indigo-50 p-4">
@@ -120,7 +120,7 @@ export default function MyCoursesPage() {
 
                   <div className="mt-5 flex gap-3">
                     <Link
-                      href={`/courses/${course.id}`}
+                      href={`/my-courses/${course.id}`}
                       className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50"
                     >
                       Course Info
