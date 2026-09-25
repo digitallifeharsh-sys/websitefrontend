@@ -1,171 +1,155 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
-
-const API = "/backend-api";
 
 const boards = [
-  ["NIOS", "/boards/nios.jpeg"],
-  ["CBSE", "/boards/cbse.jpeg"],
-  ["ICSE", "/boards/icse.jpeg"],
-  ["BOSSE", "/boards/bosse.jpeg"],
+  {
+    name: "NIOS",
+    fullName: "National Institute of Open Schooling",
+    logo: "/boards/nios.jpeg",
+  },
+  {
+    name: "CBSE",
+    fullName: "Central Board of Secondary Education",
+    logo: "/boards/cbse.jpeg",
+  },
+  {
+    name: "ICSE",
+    fullName: "Indian Certificate of Secondary Education",
+    logo: "/boards/icse.jpeg",
+  },
+  {
+    name: "BOSSE",
+    fullName: "Board of Open Schooling & Skill Education",
+    logo: "/boards/bosse.jpeg",
+  },
 ];
 
-export default function Courses() {
-  const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let active = true;
-
-    const loadCourses = async () => {
-      try {
-        const response = await fetch(`${API}/courses`, {
-          cache: "no-store",
-        });
-
-        if (!response.ok) {
-          throw new Error(`Courses load failed: ${response.status}`);
-        }
-
-        const payload = await response.json();
-
-        if (active) {
-          setCourses(Array.isArray(payload?.data) ? payload.data : []);
-        }
-      } catch (error) {
-        console.error("Home courses error:", error);
-        if (active) setCourses([]);
-      } finally {
-        if (active) setLoading(false);
-      }
-    };
-
-    loadCourses();
-
-    return () => {
-      active = false;
-    };
-  }, []);
+export default function BoardSlider() {
+  // Duplicate boards for seamless infinite slider
+  const sliderBoards = [...boards, ...boards, ...boards];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#f7f8fc] py-20 lg:py-24">
-      <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-indigo-200/40 blur-[120px]" />
-      <div className="absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-violet-200/40 blur-[120px]" />
+    <section className="relative w-full bg-slate-50 py-20 lg:py-28 overflow-hidden">
+      
+      {/* Background Decorative Blobs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-violet-300 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob animation-delay-2000" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-600 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-indigo-500" />
-            Learn • Practice • Progress
-          </div>
-
-          <h2 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Explore Our{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              Courses
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* HEADING SECTION */}
+        <div className="text-center mb-16 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 font-semibold text-sm mb-6 shadow-sm"
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500"></span>
             </span>
-          </h2>
+            Your Board • Your Chance
+          </motion.div>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-            Structured courses, exam preparation and learning support designed
-            for your academic journey.
-          </p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight"
+          >
+            Pass Your 10th & 12th
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+              Your Success Starts Here
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 max-w-2xl text-slate-600 text-lg"
+          >
+            Expert academic support for students from major
+            school boards. Choose your board and start your journey today.
+          </motion.p>
         </div>
 
-        {loading ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="h-80 animate-pulse rounded-3xl border border-slate-200 bg-white"
-              />
-            ))}
-          </div>
-        ) : courses.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {courses.map((course) => (
+        {/* SLIDER WRAPPER */}
+        <div className="relative w-full py-8">
+          
+          {/* Edge Fade Masks for smooth slider entry/exit */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-20 pointer-events-none" />
+
+          {/* SLIDER */}
+          <motion.div
+            className="relative z-10 flex gap-8 w-max"
+            animate={{
+              x: ["0%", "-33.33%"],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {sliderBoards.map((board, index) => (
               <motion.div
-                key={course.id}
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_10px_35px_rgba(15,23,42,.05)] hover:border-indigo-100 hover:shadow-[0_22px_55px_rgba(79,70,229,.12)]"
+                key={`${board.name}-${index}`}
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="group relative flex-shrink-0 w-[260px] h-[240px] bg-white/80 backdrop-blur-xl rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(79,70,229,0.1)] hover:border-indigo-100 p-6 flex flex-col items-center justify-center cursor-pointer transition-all duration-300"
               >
-                <div className="h-48 overflow-hidden bg-indigo-50">
-                  {course.imageUrl ? (
-                    <img
-                      src={course.imageUrl}
-                      alt={course.name || "Course"}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center bg-gradient-to-br from-indigo-50 to-violet-50">
-                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-indigo-100 bg-white text-xl font-black text-indigo-600 shadow-sm">
-                        DNS
-                      </div>
-                    </div>
-                  )}
+                {/* Subtle Background Glow on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-300" />
+
+                {/* Logo */}
+                <div className="relative w-24 h-24 mb-5 z-10 p-2 bg-white rounded-2xl shadow-sm border border-slate-50 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src={board.logo}
+                    alt={`${board.name} logo`}
+                    fill
+                    sizes="96px"
+                    className="object-contain p-2"
+                  />
                 </div>
 
-                <div className="p-6">
-                  <span className="text-xs font-bold uppercase tracking-[.16em] text-indigo-600">
-                    DNS Academy
-                  </span>
-
-                  <h3 className="mt-2 line-clamp-2 text-xl font-black text-slate-950">
-                    {course.name}
+                {/* Text Content */}
+                <div className="relative z-10 text-center">
+                  <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">
+                    {board.name}
                   </h3>
-
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-500">
-                    {course.subject?.name || course.description?.short || "Structured learning course"}
+                  <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-[200px]">
+                    {board.fullName}
                   </p>
-
-                  <div className="mt-6 flex items-center justify-between gap-3">
-                    <span className="text-xl font-black text-slate-950">
-                      ₹{Number(course.price || 0).toLocaleString("en-IN")}
-                    </span>
-
-                    <Link
-                      href={`/courses/${course.id}`}
-                      className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700"
-                    >
-                      View Course →
-                    </Link>
-                  </div>
                 </div>
               </motion.div>
             ))}
-          </div>
-        ) : (
-          <div className="rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-            <h3 className="text-xl font-black text-slate-900">
-              Courses are being updated
-            </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              Please check the Courses page again shortly.
-            </p>
-            <Link
-              href="/courses"
-              className="mt-5 inline-flex rounded-xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white hover:bg-indigo-700"
-            >
-              Open Courses →
-            </Link>
-          </div>
-        )}
+          </motion.div>
+        </div>
 
-        <div className="mt-14 flex flex-wrap justify-center gap-3">
-          {boards.map(([name, logo]) => (
-            <div
-              key={name}
-              className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 shadow-sm"
+        {/* BOTTOM BADGES */}
+        <div className="flex flex-wrap justify-center items-center gap-3 mt-12">
+          {boards.map((board, idx) => (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              key={board.name}
+              className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-xl text-sm font-semibold shadow-sm hover:border-indigo-200 hover:text-indigo-600 hover:bg-indigo-50 transition-colors cursor-default"
             >
-              <img src={logo} alt="" className="h-7 w-7 object-contain" />
-              {name}
-            </div>
+              {board.name}
+            </motion.span>
           ))}
         </div>
+
       </div>
     </section>
   );
