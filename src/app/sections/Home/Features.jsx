@@ -1,35 +1,11 @@
-export default function Features() {
-  const features = [
-    { title: "Expert Faculty", desc: "Learn from top educators with years of industry experience." },
-    { title: "Live Classes", desc: "Interactive live sessions to clear your doubts in real-time." },
-    { title: "Mock Tests", desc: "Practice with our exhaustive test series based on latest patterns." },
-    { title: "Study Material", desc: "Get access to premium PDF notes and previous year papers." }
-  ];
+import { Award, BookOpenCheck, ShieldCheck, Users } from "lucide-react";
 
-  return (
-    <section className="w-full bg-[#f4f4f0] py-20 border-b-4 border-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-black text-black mb-4">
-            Why Choose <span className="bg-indigo-600 text-white px-2 leading-snug border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">DNS?</span>
-          </h2>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((item, index) => (
-            <div 
-              key={index} 
-              className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all"
-            >
-              <div className="w-10 h-10 bg-indigo-600 border-2 border-black mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
-              <h3 className="text-lg font-black text-black mb-2">{item.title}</h3>
-              <p className="text-black font-semibold text-sm leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+export default function Features(){
+ const items=[
+  {icon:Users,title:"Personal Guidance",text:"Clear guidance and support when you need it."},
+  {icon:BookOpenCheck,title:"Exam Focused",text:"Courses and material built around practical exam preparation."},
+  {icon:ShieldCheck,title:"Secure Learning",text:"Purchased content stays behind your account."},
+  {icon:Award,title:"Learn With Confidence",text:"Simple lessons, practice and structured progress."},
+ ];
+ return <section className="bg-[#f4f3ef] py-24"><div className="max-w-6xl mx-auto px-6"><div className="max-w-2xl"><p className="text-xs font-bold tracking-[.2em] text-zinc-500">DNS ACADEMY</p><h2 className="mt-3 text-4xl lg:text-5xl font-black tracking-tight">Why students choose DNS</h2><p className="mt-4 text-zinc-500">Everything you need to keep learning in one place.</p></div><div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">{items.map(({icon:Icon,title,text})=><div key={title} className="relative rounded-3xl bg-white border border-zinc-200 p-6 shadow-sm hover:-translate-y-1 hover:shadow-xl transition"><div className="absolute -top-3 right-5 w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center rotate-3"><Icon size={21}/></div><h3 className="font-black text-lg mt-6">{title}</h3><p className="mt-2 text-sm leading-6 text-zinc-500">{text}</p></div>)}</div></div></section>
 }
