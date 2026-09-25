@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://15.252.146.207:5000/api/v1";
+const API_URL = "/backend-api";
 
 export default function CurrentAffairsPage() {
     const router = useRouter();
@@ -102,16 +102,16 @@ export default function CurrentAffairsPage() {
     };
 
     return (
-        <main className="min-h-screen bg-gray-50 pt-28 pb-24 px-4 sm:px-6 font-sans">
+        <main className="min-h-screen bg-[#f4f6fb] pt-28 pb-24 px-4 sm:px-6 font-sans">
             <div className="max-w-7xl mx-auto">
                 
                 {/* HEADER */}
                 <div className="max-w-3xl mx-auto text-center mb-12">
-                    <span className="inline-block py-1 px-3 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide mb-4">
+                    <span className="inline-block py-1 px-3 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm font-semibold tracking-wide mb-4">
                         Daily Updates & Analysis
                     </span>
                     <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                        Current Affairs <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Portal</span>
+                        Current Affairs <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Portal</span>
                     </h1>
                     <p className="text-lg text-gray-500">
                         Stay ahead in your exams with comprehensive daily news, monthly magazines, and revision modules.
@@ -145,7 +145,7 @@ export default function CurrentAffairsPage() {
                         )}
                         <button
                             type="submit"
-                            className="ml-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors shadow-sm"
+                            className="ml-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-colors shadow-sm"
                         >
                             Search
                         </button>
@@ -195,7 +195,7 @@ export default function CurrentAffairsPage() {
                     </div>
                 ) : courses.length === 0 ? (
                     <div className="max-w-xl mx-auto bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-sm">
-                        <div className="mx-auto w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-5">
+                        <div className="mx-auto w-20 h-20 bg-[#f4f6fb] rounded-full flex items-center justify-center mb-5">
                             <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
@@ -224,7 +224,7 @@ export default function CurrentAffairsPage() {
                                         className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                                     >
                                         {/* IMAGE SECTION */}
-                                        <div className="relative h-48 w-full bg-blue-50 overflow-hidden">
+                                        <div className="relative h-48 w-full bg-indigo-50 overflow-hidden">
                                             {course.imageUrl ? (
                                                 <img
                                                     src={course.imageUrl}
@@ -232,7 +232,7 @@ export default function CurrentAffairsPage() {
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                 />
                                             ) : (
-                                                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
+                                                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 to-violet-700">
                                                     <span className="text-4xl font-bold text-white">CA</span>
                                                     <span className="text-blue-100 text-sm mt-1">Current Affairs</span>
                                                 </div>
@@ -249,14 +249,14 @@ export default function CurrentAffairsPage() {
                                             {exams.length > 0 && (
                                                 <div className="flex flex-wrap gap-2 mb-3">
                                                     {exams.slice(0, 3).map((exam) => (
-                                                        <span key={exam} className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md text-xs font-semibold border border-blue-100">
+                                                        <span key={exam} className="px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-md text-xs font-semibold border border-indigo-100">
                                                             {exam}
                                                         </span>
                                                     ))}
                                                 </div>
                                             )}
 
-                                            <h2 className="text-xl font-bold text-gray-900 leading-tight mb-2 group-hover:text-blue-600 transition-colors">
+                                            <h2 className="text-xl font-bold text-gray-900 leading-tight mb-2 group-hover:text-indigo-600 transition-colors">
                                                 {course.name}
                                             </h2>
 
@@ -305,7 +305,7 @@ export default function CurrentAffairsPage() {
                                                     </div>
                                                     <button
                                                         onClick={() => openCourse(course)}
-                                                        className="px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-blue-600 transition-colors duration-300"
+                                                        className="px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-indigo-600 transition-colors duration-300"
                                                     >
                                                         View Details
                                                     </button>
@@ -327,7 +327,7 @@ export default function CurrentAffairsPage() {
                                         setPage(next);
                                         loadCourses(query, next);
                                     }}
-                                    className="px-4 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 font-medium hover:bg-gray-50 disabled:opacity-50 disabled:hover:bg-white transition"
+                                    className="px-4 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 font-medium hover:bg-[#f4f6fb] disabled:opacity-50 disabled:hover:bg-white transition"
                                 >
                                     Previous
                                 </button>
@@ -341,7 +341,7 @@ export default function CurrentAffairsPage() {
                                         setPage(next);
                                         loadCourses(query, next);
                                     }}
-                                    className="px-4 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 font-medium hover:bg-gray-50 disabled:opacity-50 disabled:hover:bg-white transition"
+                                    className="px-4 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 font-medium hover:bg-[#f4f6fb] disabled:opacity-50 disabled:hover:bg-white transition"
                                 >
                                     Next
                                 </button>
