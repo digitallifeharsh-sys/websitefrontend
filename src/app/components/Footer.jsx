@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Phone, Mail, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 const API_URL = "/backend-api";
 
-const SOCIAL_ICONS = {
-  YOUTUBE: Youtube,
-  INSTAGRAM: Instagram,
-  FACEBOOK: Facebook,
-  X: Twitter,
+const SOCIAL_LABELS = {
+  YOUTUBE: "YT",
+  INSTAGRAM: "IG",
+  FACEBOOK: "FB",
+  X: "X",
 };
 
 export default function Footer() {
@@ -39,33 +39,33 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full border-t border-slate-200 bg-[#f7f8fc] pt-16 pb-8 text-slate-800">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    <footer className="w-full bg-white text-slate-800 border-t border-slate-200 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
           <div>
-            <div className="mb-7 flex items-center gap-3">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-600 font-black text-white shadow-[0_8px_24px_rgba(79,70,229,.22)]">
+            <div className="flex items-center gap-3 mb-7">
+              <div className="w-14 h-14 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black shadow-[0_8px_24px_rgba(79,70,229,.22)]">
                 DNS
               </div>
               <div>
-                <h3 className="text-lg font-black text-slate-900">DNS Education</h3>
-                <p className="text-[9px] font-semibold uppercase tracking-[.16em] text-slate-400">
+                <h3 className="font-black text-lg text-slate-900">DNS Education</h3>
+                <p className="text-[9px] font-semibold text-slate-400 tracking-[.16em] uppercase">
                   Learn • Grow • Success
                 </p>
               </div>
             </div>
 
-            <p className="max-w-xs text-sm leading-6 text-slate-500">
+            <p className="text-sm leading-6 text-slate-500 max-w-xs">
               Structured learning, exam preparation and academic support for students.
             </p>
 
             <div className="mt-6">
-              <h3 className="mb-3 text-sm font-black text-slate-900">Follow us</h3>
-              <div className="flex flex-wrap items-center gap-2.5">
+              <h3 className="font-black text-sm text-slate-900 mb-3">Follow us</h3>
+              <div className="flex items-center gap-2.5 flex-wrap">
                 {socialMedia.length > 0 ? (
                   socialMedia.map((account) => {
-                    const Icon = SOCIAL_ICONS[account.platform];
-                    if (!Icon || !account.profileUrl) return null;
+                    const label = SOCIAL_LABELS[account.platform];
+                    if (!label || !account.profileUrl) return null;
 
                     return (
                       <a
@@ -74,9 +74,9 @@ export default function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={account.label || account.platform}
-                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-indigo-600 hover:bg-indigo-600 hover:text-white"
+                        className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
                       >
-                        <Icon size={18} />
+                        <span className="text-xs font-black">{label}</span>
                       </a>
                     );
                   })
@@ -88,41 +88,53 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-black text-slate-900">Contact</h3>
+            <h3 className="font-black text-sm text-slate-900 mb-4">Contact</h3>
             <ul className="space-y-4 text-sm font-semibold text-slate-600">
-              <li className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><Phone size={16} /></span>8920830582</li>
-              <li className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 font-black text-xs">WA</span>8920830582</li>
-              <li className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><Mail size={16} /></span>manishvermaclasses@gmail.com</li>
-              <li className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"><Phone size={16} /></span>7982803422</li>
+              <li className="flex items-center gap-3">
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Phone size={16} /></span>
+                8920830582
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-xs">WA</span>
+                8920830582
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Mail size={16} /></span>
+                manishvermaclasses@gmail.com
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Phone size={16} /></span>
+                7982803422
+              </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-black text-slate-900">Legal</h3>
+            <h3 className="font-black text-sm text-slate-900 mb-4">Legal</h3>
             <ul className="space-y-3 text-sm font-semibold text-slate-600">
-              <li><Link href="/terms" className="transition-colors hover:text-indigo-600">Terms & Conditions</Link></li>
-              <li><Link href="/privacy-policy" className="transition-colors hover:text-indigo-600">Privacy Policy</Link></li>
-              <li><Link href="/refunds" className="transition-colors hover:text-indigo-600">Refunds & Cancellation Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-indigo-600 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-indigo-600 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/refunds" className="hover:text-indigo-600 transition-colors">Refunds & Cancellation Policy</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-black text-slate-900">Download App</h3>
-            <a href="#" className="inline-flex items-center gap-3 rounded-xl bg-indigo-600 px-4 py-3 text-white shadow-[0_8px_20px_rgba(79,70,229,.16)] transition-all hover:-translate-y-0.5 hover:bg-indigo-700">
+            <h3 className="font-black text-sm text-slate-900 mb-4">Download App</h3>
+            <a href="#" className="inline-flex items-center gap-3 rounded-xl bg-slate-950 text-white px-4 py-3 shadow-[0_8px_20px_rgba(15,23,42,.16)] hover:-translate-y-0.5 transition-all">
               <span className="text-2xl">▶</span>
               <span>
-                <span className="block text-[9px] font-bold uppercase text-indigo-100">Get it on</span>
+                <span className="block text-[9px] font-bold text-slate-300 uppercase">Get it on</span>
                 <span className="block text-base font-black">Google Play</span>
               </span>
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-6 md:flex-row">
-          <p className="text-sm font-semibold text-slate-500">
+        <div className="border-t border-slate-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-semibold text-sm text-slate-500">
             © {new Date().getFullYear()} DNS Education. All rights reserved.
           </p>
-          <div className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-500">
+          <div className="text-xs font-bold text-slate-500 uppercase tracking-widest bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
             Learn • Grow • Success
           </div>
         </div>
