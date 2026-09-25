@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  "http://15.252.146.207:5000";
 
 const SOCIAL_ICONS = {
   YOUTUBE: FaYoutube,
@@ -61,7 +61,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full bg-[#f4f4f0] border-t-4 border-black pt-16 pb-8">
+    <footer className="w-full bg-[#111] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
@@ -72,8 +72,8 @@ export default function Footer() {
             {/* Logo Area */}
             <div className="mb-8">
               <div className="w-28 h-28 bg-white border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
-                <span className="text-black font-black text-center leading-tight tracking-tight">
-                  <span className="text-3xl text-indigo-600">
+                <span className="text-white font-black text-center leading-tight tracking-tight">
+                  <span className="text-3xl text-black">
                     DNS
                   </span>
                   <br />
@@ -86,7 +86,7 @@ export default function Footer() {
 
             {/* Follow Us */}
             <div>
-              <h3 className="font-black text-black uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
+              <h3 className="font-black text-white uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
                 Follow us
               </h3>
 
@@ -116,7 +116,7 @@ export default function Footer() {
                         title={
                           account.label || account.platform
                         }
-                        className="w-10 h-10 flex items-center justify-center bg-white border-2 border-black text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-indigo-600 hover:text-white transition-all"
+                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-white transition-all"
                       >
                         <Icon size={20} />
                       </a>
@@ -134,28 +134,28 @@ export default function Footer() {
 
           {/* Column 2: Contact */}
           <div>
-            <h3 className="font-black text-black uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
+            <h3 className="font-black text-white uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
               Contact
             </h3>
 
             <ul className="space-y-4">
 
-              <li className="flex items-center gap-3 text-black font-semibold text-sm">
-                <div className="p-1.5 bg-white border-2 border-black">
+              <li className="flex items-center gap-3 text-white font-semibold text-sm">
+                <div className="p-1.5 bg-white/5 border border-white/10">
                   <Phone size={16} />
                 </div>
                 <span>8920830582</span>
               </li>
 
-              <li className="flex items-center gap-3 text-black font-semibold text-sm">
-                <div className="p-1.5 bg-white border-2 border-black">
+              <li className="flex items-center gap-3 text-white font-semibold text-sm">
+                <div className="p-1.5 bg-white/5 border border-white/10">
                   <span className="text-sm font-black">WA</span>
                 </div>
                 <span>8920830582</span>
               </li>
 
-              <li className="flex items-center gap-3 text-black font-semibold text-sm">
-                <div className="p-1.5 bg-white border-2 border-black">
+              <li className="flex items-center gap-3 text-white font-semibold text-sm">
+                <div className="p-1.5 bg-white/5 border border-white/10">
                   <Mail size={16} />
                 </div>
                 <span>
@@ -163,8 +163,8 @@ export default function Footer() {
                 </span>
               </li>
 
-              <li className="flex items-center gap-3 text-black font-semibold text-sm">
-                <div className="p-1.5 bg-white border-2 border-black">
+              <li className="flex items-center gap-3 text-white font-semibold text-sm">
+                <div className="p-1.5 bg-white/5 border border-white/10">
                   <Phone size={16} />
                 </div>
                 <span>7982803422</span>
@@ -175,7 +175,7 @@ export default function Footer() {
 
           {/* Column 3: Legal */}
           <div>
-            <h3 className="font-black text-black uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
+            <h3 className="font-black text-white uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
               Legal
             </h3>
 
@@ -184,7 +184,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-black hover:bg-indigo-600 hover:text-white inline-block px-1 -ml-1 transition-colors"
+                  className="text-white hover:bg-white hover:text-white inline-block px-1 -ml-1 transition-colors"
                 >
                   Terms & Conditions
                 </Link>
@@ -193,7 +193,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-black hover:bg-indigo-600 hover:text-white inline-block px-1 -ml-1 transition-colors"
+                  className="text-white hover:bg-white hover:text-white inline-block px-1 -ml-1 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -202,7 +202,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/refunds"
-                  className="text-black hover:bg-indigo-600 hover:text-white inline-block px-1 -ml-1 transition-colors leading-relaxed"
+                  className="text-white hover:bg-white hover:text-white inline-block px-1 -ml-1 transition-colors leading-relaxed"
                 >
                   Refunds & Cancellation
                   <br />
@@ -215,7 +215,7 @@ export default function Footer() {
 
           {/* Column 4: Download App */}
           <div>
-            <h3 className="font-black text-black uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
+            <h3 className="font-black text-white uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
               Download App
             </h3>
 
@@ -249,13 +249,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="border-t-4 border-black pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
-          <p className="font-bold text-sm text-black">
+          <p className="font-bold text-sm text-white">
             © {new Date().getFullYear()} DNS Education. All rights reserved.
           </p>
 
-          <div className="font-mono text-xs font-bold text-black uppercase tracking-widest bg-white border-2 border-black px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <div className="font-mono text-xs font-bold text-white uppercase tracking-widest bg-white/5 border border-white/10 px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             Learn • Grow • Success
           </div>
 
