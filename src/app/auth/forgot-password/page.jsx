@@ -11,7 +11,7 @@ import {
     EyeOff,
 } from "lucide-react";
 
-const API_URL = "http://15.252.146.207:5000/api/v1/auth";
+const API_URL = "/backend-api/auth";
 
 export default function ForgotPasswordPage() {
     const router = useRouter();
