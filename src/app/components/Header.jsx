@@ -457,7 +457,7 @@ export default function Header() {
                   </span>
                 </Link>
 
-                <Link href="/my-courses" className="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600">My Courses</Link>
+                <Link href="/my-courses" className="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600">Purchased Courses</Link>
 
                 {/* LOGOUT */}
 
