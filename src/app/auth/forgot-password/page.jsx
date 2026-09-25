@@ -11,9 +11,7 @@ import {
     EyeOff,
 } from "lucide-react";
 
-const API_URL =
-    process.env.NEXT_PUBLIC_AUTH_API_URL ||
-    "http://localhost:5000/api/v1/auth";
+const API_URL = "http://15.252.146.207:5000/api/v1/auth";
 
 export default function ForgotPasswordPage() {
     const router = useRouter();
@@ -244,7 +242,7 @@ export default function ForgotPasswordPage() {
         return (
             <main className="min-h-screen bg-[#f4f4f0] flex items-center justify-center px-5">
 
-                <div className="w-full max-w-md bg-white border-2 border-black shadow-[8px_8px_0px_#000] p-7 sm:p-9">
+                <div className="w-full max-w-md bg-white border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,.08)] rounded-3xl p-7 sm:p-9">
 
                     <button
                         onClick={() =>
@@ -258,7 +256,7 @@ export default function ForgotPasswordPage() {
                         Back
                     </button>
 
-                    <div className="w-12 h-12 bg-indigo-600 text-white border-2 border-black flex items-center justify-center font-black shadow-[3px_3px_0px_#000] mb-6">
+                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-black shadow-[3px_3px_0px_#000] mb-6">
                         DNS
                     </div>
 
@@ -376,7 +374,7 @@ export default function ForgotPasswordPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white border-2 border-black shadow-[5px_5px_0px_#000] py-4 flex items-center justify-center gap-3 font-black"
+                            className="w-full mt-6 bg-black text-white disabled:opacity-40 py-4 flex items-center justify-center gap-3 font-black"
                         >
                             {loading
                                 ? "Resetting..."
@@ -399,7 +397,7 @@ export default function ForgotPasswordPage() {
     return (
         <main className="min-h-screen bg-[#f4f4f0] flex items-center justify-center px-5">
 
-            <div className="w-full max-w-md bg-white border-2 border-black shadow-[8px_8px_0px_#000] p-7 sm:p-9">
+            <div className="w-full max-w-md bg-white border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,.08)] rounded-3xl p-7 sm:p-9">
 
                 <button
                     onClick={() =>
@@ -413,7 +411,7 @@ export default function ForgotPasswordPage() {
                     Back
                 </button>
 
-                <div className="w-12 h-12 bg-indigo-600 text-white border-2 border-black flex items-center justify-center font-black shadow-[3px_3px_0px_#000] mb-6">
+                <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-black shadow-[3px_3px_0px_#000] mb-6">
                     DNS
                 </div>
 
@@ -487,7 +485,7 @@ export default function ForgotPasswordPage() {
                                 .replace(/^91/, "")
                                 .length < 10
                         }
-                        className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white border-2 border-black shadow-[5px_5px_0px_#000] py-4 flex items-center justify-center gap-3 font-black"
+                        className="w-full mt-6 bg-black text-white disabled:opacity-40 py-4 flex items-center justify-center gap-3 font-black"
                     >
                         {loading
                             ? "Sending OTP..."
