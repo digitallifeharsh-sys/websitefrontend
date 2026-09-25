@@ -58,10 +58,7 @@ const body = Inter({
    Preserves the existing backend contract exactly.
 ===================================================== */
 
-const API_URL =
-    process.env.NEXT_PUBLIC_API_URL
-        ? `${process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, "")}/api/v1`
-        : "http://localhost:5000/api/v1";
+const API_URL = "http://15.252.146.207:5000/api/v1";
 
 const getToken = () => {
     if (typeof window === "undefined") {
