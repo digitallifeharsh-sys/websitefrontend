@@ -71,13 +71,13 @@ export default function Footer() {
 
             {/* Logo Area */}
             <div className="mb-8">
-              <div className="w-28 h-28 bg-white border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
-                <span className="text-white font-black text-center leading-tight tracking-tight">
-                  <span className="text-3xl text-black">
+              <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-xl">
+                <span className="text-black font-black text-center leading-tight tracking-tight">
+                  <span className="text-2xl text-black">
                     DNS
                   </span>
                   <br />
-                  <span className="text-sm">
+                  <span className="text-[10px]">
                     EDUCATION
                   </span>
                 </span>
@@ -86,7 +86,7 @@ export default function Footer() {
 
             {/* Follow Us */}
             <div>
-              <h3 className="font-black text-white uppercase tracking-wider mb-4 border-b-2 border-black inline-block pb-1">
+              <h3 className="font-black text-white uppercase tracking-wider mb-4 inline-block pb-1">
                 Follow us
               </h3>
 
@@ -116,7 +116,7 @@ export default function Footer() {
                         title={
                           account.label || account.platform
                         }
-                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-white transition-all"
+                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-black transition-all"
                       >
                         <Icon size={20} />
                       </a>
