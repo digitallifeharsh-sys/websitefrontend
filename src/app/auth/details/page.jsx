@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye,EyeOff,Lock,User,ArrowRight } from "lucide-react";
 
-const API_URL="http://15.252.146.207:5000/api/v1/auth";
+const API_URL="/backend-api/auth";
 
 export default function DetailsPage(){
  const router=useRouter();const [phoneNumber,setPhoneNumber]=useState("");const [authType,setAuthType]=useState("");const [name,setName]=useState("");const [password,setPassword]=useState("");const [confirmPassword,setConfirmPassword]=useState("");const [show,setShow]=useState(false);const [show2,setShow2]=useState(false);const [loading,setLoading]=useState(false);const [error,setError]=useState("");
