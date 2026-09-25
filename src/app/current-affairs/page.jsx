@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://localhost:5000/api/v1";
+const API_URL = "http://15.252.146.207:5000/api/v1";
 
 export default function CurrentAffairsPage() {
     const router = useRouter();
