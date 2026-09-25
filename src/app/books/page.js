@@ -1,4 +1,105 @@
 "use client";
-import {useEffect,useState} from "react";import Link from "next/link";
-const API="http://15.252.146.207:5000/api/v1";
-export default function Books(){const[data,setData]=useState([]),[q,setQ]=useState(""),[loading,setLoading]=useState(true);const load=()=>{setLoading(true);const p=new URLSearchParams({page:"1",limit:"30"});if(q.trim())p.set("q",q.trim());fetch(API+"/books?"+p).then(r=>r.json()).then(x=>setData(Array.isArray(x?.data)?x.data:[])).finally(()=>setLoading(false))};useEffect(load,[]);return <main className="min-h-screen bg-[#f4f3ef] px-5 py-28"><div className="max-w-6xl mx-auto"><p className="text-xs font-bold tracking-[.2em] text-zinc-500">DNS ACADEMY</p><h1 className="text-4xl font-black mt-2">Books & Study Material</h1><div className="flex gap-2 mt-7 max-w-xl"><input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search books..." className="flex-1 rounded-2xl border border-zinc-300 bg-white px-5 py-3 outline-none"/><button onClick={load} className="rounded-2xl bg-black text-white px-5 font-bold">Search</button></div>{loading?<p className="mt-8">Loading...</p>:<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">{data.map(x=><Link key={x.id} href={"/books/"+x.id} className="rounded-3xl bg-white border border-zinc-200 p-4 hover:-translate-y-1 hover:shadow-xl transition"><div className="h-48 rounded-2xl bg-zinc-100 overflow-hidden">{x.coverImageUrl&&<img src={x.coverImageUrl} alt="" className="w-full h-full object-cover"/></div><h2 className="font-black mt-4">{x.title}</h2><p className="text-xs text-zinc-500 mt-1">{x.book?.author||"DNS Academy"}</p><b className="block mt-4">₹{Number(x.pricing?.total||0).toLocaleString("en-IN")}</b></Link>)}</div>}</div></main>}
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+const API = "/backend-api";
+
+export default function Books() {
+  const [data, setData] = useState([]);
+  const [q, setQ] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const load = () => {
+    setLoading(true);
+
+    const params = new URLSearchParams({
+      page: "1",
+      limit: "30",
+    });
+
+    if (q.trim()) {
+      params.set("q", q.trim());
+    }
+
+    fetch(`${API}/books?${params.toString()}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setData(Array.isArray(result?.data) ? result.data : []);
+      })
+      .catch(() => {
+        setData([]);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  return (
+    <main className="min-h-screen bg-[#f4f3ef] px-5 py-28">
+      <div className="mx-auto max-w-6xl">
+        <p className="text-xs font-bold tracking-[.2em] text-zinc-500">
+          DNS ACADEMY
+        </p>
+
+        <h1 className="mt-2 text-4xl font-black">
+          Books & Study Material
+        </h1>
+
+        <div className="mt-7 flex max-w-xl gap-2">
+          <input
+            value={q}
+            onChange={(event) => setQ(event.target.value)}
+            placeholder="Search books..."
+            className="flex-1 rounded-2xl border border-zinc-300 bg-white px-5 py-3 outline-none"
+          />
+
+          <button
+            onClick={load}
+            className="rounded-2xl bg-black px-5 font-bold text-white"
+          >
+            Search
+          </button>
+        </div>
+
+        {loading ? (
+          <p className="mt-8">Loading...</p>
+        ) : (
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {data.map((book) => (
+              <Link
+                key={book.id}
+                href={`/books/${book.id}`}
+                className="rounded-3xl border border-zinc-200 bg-white p-4 transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="h-48 overflow-hidden rounded-2xl bg-zinc-100">
+                  {book.coverImageUrl ? (
+                    <img
+                      src={book.coverImageUrl}
+                      alt={book.title || "Book cover"}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : null}
+                </div>
+
+                <h2 className="mt-4 font-black">{book.title}</h2>
+
+                <p className="mt-1 text-xs text-zinc-500">
+                  {book.book?.author || "DNS Academy"}
+                </p>
+
+                <b className="mt-4 block">
+                  ₹{Number(book.pricing?.total || 0).toLocaleString("en-IN")}
+                </b>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
