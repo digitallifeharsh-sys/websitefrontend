@@ -58,7 +58,7 @@ const body = Inter({
    Preserves the existing backend contract exactly.
 ===================================================== */
 
-const API_URL = "http://15.252.146.207:5000/api/v1";
+const API_URL = "/backend-api";
 
 const getToken = () => {
     if (typeof window === "undefined") {
