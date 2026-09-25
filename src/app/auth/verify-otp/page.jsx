@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://15.252.146.207:5000/api/v1/auth";
+const API_URL = "/backend-api/auth";
 
 export default function VerifyOtpPage() {
     const router = useRouter();
