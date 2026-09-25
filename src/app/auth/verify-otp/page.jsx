@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL =
-    process.env.NEXT_PUBLIC_AUTH_API_URL ||
-    "http://localhost:5000/api/v1/auth";
+const API_URL = "http://15.252.146.207:5000/api/v1/auth";
 
 export default function VerifyOtpPage() {
     const router = useRouter();
@@ -146,17 +144,17 @@ export default function VerifyOtpPage() {
     };
 
     return (
-        <main className="min-h-screen bg-[#f4f4f0] flex items-center justify-center px-5">
+        <main className="min-h-screen bg-[#f4f3ef] flex items-center justify-center px-5">
 
-            <div className="w-full max-w-md bg-white border-2 border-black shadow-[8px_8px_0px_#000] p-7 sm:p-9">
+            <div className="w-full max-w-md bg-white rounded-3xl border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,.08)] p-7 sm:p-9">
 
                 <div className="mb-8">
 
-                    <div className="w-12 h-12 bg-indigo-600 text-white border-2 border-black flex items-center justify-center font-black shadow-[3px_3px_0px_#000] mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center font-black mb-6">
                         DNS
                     </div>
 
-                    <div className="inline-block bg-black text-white px-3 py-1 text-xs font-black mb-4">
+                    <div className="text-xs font-bold tracking-[.2em] text-zinc-500 mb-3">
                         VERIFY OTP
                     </div>
 
@@ -195,7 +193,7 @@ export default function VerifyOtpPage() {
                             setError("");
                         }}
                         placeholder="Enter OTP"
-                        className="w-full border-2 border-black px-4 py-4 outline-none text-center text-2xl font-black tracking-[0.5em]"
+                        className="w-full rounded-2xl border border-zinc-300 bg-zinc-50 px-4 py-4 outline-none text-center text-2xl font-black tracking-[0.5em]"
                     />
 
                     {error && (
@@ -210,7 +208,7 @@ export default function VerifyOtpPage() {
                             loading ||
                             otp.length !== 6
                         }
-                        className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white border-2 border-black shadow-[5px_5px_0px_#000] py-4 font-black"
+                        className="w-full mt-6 rounded-2xl bg-black text-white py-4 font-bold disabled:opacity-40"
                     >
                         {loading
                             ? "Verifying..."
