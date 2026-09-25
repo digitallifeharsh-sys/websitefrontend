@@ -9,59 +9,62 @@ const EducationOrbit = dynamic(() => import("../Home/EducationOrbit"), {
 
 export default function Hero() {
   return (
-    <section className="min-h-[88vh] bg-[#f4f3ef] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 pt-28 pb-16 grid lg:grid-cols-2 gap-10 items-center">
+    <section className="min-h-[88vh] overflow-hidden bg-[#f7f8fc]">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 pb-16 pt-28 lg:grid-cols-2 lg:px-8">
         <div>
-          <p className="text-xs font-bold tracking-[.2em] text-zinc-500">
-            DNS ACADEMY
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm font-bold text-indigo-600 shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-indigo-500" />
+            Your Board • Your Chance
+          </div>
 
-          <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight leading-[.95]">
-            Learn today.
+          <h1 className="mt-6 text-5xl font-black leading-[.98] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+            Pass Your 10th
             <br />
-            <span className="text-zinc-500">Build tomorrow.</span>
+            &amp; 12th
+            <br />
+            <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              Your Success Starts Here
+            </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-zinc-500">
-            Courses, exam preparation and structured learning — all in one
-            place.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+            Expert academic support, structured courses and exam preparation —
+            all in one place.
           </p>
 
-          <div className="mt-8 flex gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/courses"
-              className="rounded-2xl bg-black text-white px-6 py-4 font-bold"
+              className="rounded-2xl bg-indigo-600 px-6 py-4 font-bold text-white shadow-[0_12px_30px_rgba(79,70,229,.18)] transition hover:-translate-y-0.5 hover:bg-indigo-700"
             >
               Explore Courses →
             </Link>
 
             <Link
               href="/auth/number"
-              className="rounded-2xl bg-white border border-zinc-200 px-6 py-4 font-bold"
+              className="rounded-2xl border border-slate-200 bg-white px-6 py-4 font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600"
             >
               Login
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-3 gap-3 max-w-md">
+          <div className="mt-10 grid max-w-md grid-cols-3 gap-3">
             {["Courses", "Weekly Tests", "Guidance"].map((x) => (
               <div
                 key={x}
-                className="rounded-2xl bg-white border border-zinc-200 p-4"
+                className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
               >
-                <b className="text-sm">{x}</b>
-                <p className="text-xs text-zinc-500 mt-1">DNS learning</p>
+                <b className="text-sm text-slate-900">{x}</b>
+                <p className="mt-1 text-xs text-slate-500">DNS learning</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="relative h-[480px]">
-          <div className="absolute inset-0">
-            <EducationOrbit />
-          </div>
+          <EducationOrbit />
 
-          <div className="absolute right-4 top-16 rounded-2xl bg-white px-4 py-3 shadow-xl border border-zinc-200 text-sm font-bold">
+          <div className="absolute right-4 top-16 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-xl">
             Learn. Practice. Progress.
           </div>
         </div>
