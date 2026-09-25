@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Phone } from "lucide-react";
 
-const API_URL="http://15.252.146.207:5000/api/v1/auth";
+const API_URL="/backend-api/auth";
 
 export default function NumberPage(){
  const router=useRouter();const [phoneNumber,setPhoneNumber]=useState("");const [loading,setLoading]=useState(false);const [error,setError]=useState("");
