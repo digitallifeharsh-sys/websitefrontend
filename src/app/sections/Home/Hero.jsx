@@ -1,4 +1,71 @@
 "use client";
-import dynamic from "next/dynamic";import Image from "next/image";import Link from "next/link";
-const EducationOrbit=dynamic(()=>import("../Home/EducationOrbit"),{ssr:false});
-export default function Hero(){return <section className="min-h-[88vh] bg-[#f4f3ef] overflow-hidden"><div className="max-w-7xl mx-auto px-6 pt-28 pb-16 grid lg:grid-cols-2 gap-10 items-center"><div><p className="text-xs font-bold tracking-[.2em] text-zinc-500">DNS ACADEMY</p><h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight leading-[.95]">Learn today.<br/><span className="text-zinc-500">Build tomorrow.</span></h1><p className="mt-6 max-w-xl text-lg text-zinc-500">Courses, exam preparation and structured learning — all in one place.</p><div className="mt-8 flex gap-3"><Link href="/courses" className="rounded-2xl bg-black text-white px-6 py-4 font-bold">Explore Courses →</Link><Link href="/auth/number" className="rounded-2xl bg-white border border-zinc-200 px-6 py-4 font-bold">Login</Link></div><div className="mt-10 grid grid-cols-3 gap-3 max-w-md">{["Courses","Weekly Tests","Guidance"].map(x=><div key={x} className="rounded-2xl bg-white border border-zinc-200 p-4"><b className="text-sm">{x}</b><p className="text-xs text-zinc-500 mt-1">DNS learning</p></div>)}</div></div><div className="relative h-[480px]"><div className="absolute inset-0"><EducationOrbit/></div><div className="absolute inset-x-10 bottom-0"><Image src="/images/hero-student.jpg" alt="DNS Student" width={500} height={600} priority className="w-full object-contain"/></div><div className="absolute right-4 top-16 rounded-2xl bg-white px-4 py-3 shadow-xl border border-zinc-200 text-sm font-bold">Learn. Practice. Progress.</div></div></div></section>}
+
+import dynamic from "next/dynamic";
+import Link from "next/link";
+
+const EducationOrbit = dynamic(() => import("../Home/EducationOrbit"), {
+  ssr: false,
+});
+
+export default function Hero() {
+  return (
+    <section className="min-h-[88vh] bg-[#f4f3ef] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 pt-28 pb-16 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p className="text-xs font-bold tracking-[.2em] text-zinc-500">
+            DNS ACADEMY
+          </p>
+
+          <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight leading-[.95]">
+            Learn today.
+            <br />
+            <span className="text-zinc-500">Build tomorrow.</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-lg text-zinc-500">
+            Courses, exam preparation and structured learning — all in one
+            place.
+          </p>
+
+          <div className="mt-8 flex gap-3">
+            <Link
+              href="/courses"
+              className="rounded-2xl bg-black text-white px-6 py-4 font-bold"
+            >
+              Explore Courses →
+            </Link>
+
+            <Link
+              href="/auth/number"
+              className="rounded-2xl bg-white border border-zinc-200 px-6 py-4 font-bold"
+            >
+              Login
+            </Link>
+          </div>
+
+          <div className="mt-10 grid grid-cols-3 gap-3 max-w-md">
+            {["Courses", "Weekly Tests", "Guidance"].map((x) => (
+              <div
+                key={x}
+                className="rounded-2xl bg-white border border-zinc-200 p-4"
+              >
+                <b className="text-sm">{x}</b>
+                <p className="text-xs text-zinc-500 mt-1">DNS learning</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative h-[480px]">
+          <div className="absolute inset-0">
+            <EducationOrbit />
+          </div>
+
+          <div className="absolute right-4 top-16 rounded-2xl bg-white px-4 py-3 shadow-xl border border-zinc-200 text-sm font-bold">
+            Learn. Practice. Progress.
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
