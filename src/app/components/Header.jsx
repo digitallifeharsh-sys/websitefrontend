@@ -448,7 +448,7 @@ export default function Header() {
                   href="/profile"
                   className="flex items-center gap-3 px-2.5 py-2 rounded-lg hover:bg-slate-50 transition-all duration-300"
                 >
-                  <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm ring-2 ring-indigo-100">
+                  <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm ring-2 ring-slate-100">
                     {userInitial}
                   </div>
 
@@ -476,7 +476,7 @@ export default function Header() {
             ) : (
               <Link
                 href="/auth/number"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-black text-white font-semibold text-sm hover:bg-zinc-800 transition-all duration-300"
               >
                 <User size={17} />
 
