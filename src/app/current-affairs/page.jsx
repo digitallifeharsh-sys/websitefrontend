@@ -5,6 +5,16 @@ import { useRouter } from "next/navigation";
 
 const API_URL = "/backend-api";
 
+const getImageUrl = (value) => {
+    if (!value) return "";
+    const raw = String(value).trim();
+    const uploadsIndex = raw.indexOf("/uploads/");
+    if (raw.startsWith("/backend-api/")) return raw;
+    if (uploadsIndex >= 0) return "/backend-api" + raw.slice(uploadsIndex);
+    if (raw.startsWith("/")) return raw;
+    return raw;
+};
+
 export default function CurrentAffairsPage() {
     const router = useRouter();
 
@@ -225,9 +235,9 @@ export default function CurrentAffairsPage() {
                                     >
                                         {/* IMAGE SECTION */}
                                         <div className="relative h-48 w-full bg-indigo-50 overflow-hidden">
-                                            {course.imageUrl ? (
+                                            {getImageUrl(course.imageUrl) ? (
                                                 <img
-                                                    src={course.imageUrl}
+                                                    src={getImageUrl(course.imageUrl)}
                                                     alt={course.name}
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                 />
