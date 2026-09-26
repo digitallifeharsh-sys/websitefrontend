@@ -24,7 +24,6 @@ import {
     Tag,
     CreditCard,
     Bell,
-    Download,
     ExternalLink,
     CircleCheck,
     AlertCircle,
@@ -942,8 +941,6 @@ export default function CurrentAffairsDetailPage() {
     const [offerError, setOfferError] = useState("");
     const [offerPreview, setOfferPreview] = useState(null);
 
-    const [scrolledPastHero, setScrolledPastHero] = useState(false);
-
     /* Reusable redirect-to-login helper. Preserves the existing
        redirect-back-here contract used across the page. */
     const redirectToLogin = useCallback(() => {
@@ -1364,21 +1361,6 @@ export default function CurrentAffairsDetailPage() {
             setBuying(false);
         }
     };
-
-    /* =========================================
-       MOBILE PURCHASE OVERLAY
-    ========================================= */
-
-    useEffect(() => {
-        const onScroll = () => {
-            setScrolledPastHero(window.scrollY > 560);
-        };
-
-        window.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
-
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     /* =========================================
        LOADING / NOT FOUND
@@ -1818,67 +1800,6 @@ export default function CurrentAffairsDetailPage() {
                 </div>
             </main>
 
-            {/* =================================
-                STICKY PURCHASE BAR
-            ================================= */}
-
-            {!isOwned && course.status === "PUBLISHED" && (
-                <div
-                    className={`fixed inset-x-0 bottom-0 z-50 border-t border-[#E4E1D8] bg-white px-3 pt-2.5 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(17,19,24,0.10)] transition-transform duration-300 sm:static sm:mt-8 sm:border-t sm:p-4 sm:shadow-none sm:translate-y-0 ${
-                        scrolledPastHero
-                            ? "translate-y-0"
-                            : "translate-y-full"
-                    }`}
-                >
-                    <div className="mx-auto flex max-w-6xl flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-4">
-                        <div className="hidden sm:block flex-1 min-w-0">
-                            <p className="font-[family-name:var(--font-display)] font-semibold text-[#111318] truncate">
-                                {course.name}
-                            </p>
-
-                            <p className="text-[13px] text-[#5B5A55]">
-                                {isFree ? "Free access" : money(total, currency)}
-                                {discount > 0 && !isFree
-                                    ? ` · saving ${money(discount, currency)}`
-                                    : ""}
-                            </p>
-                        </div>
-
-                        <button
-                            onClick={handleBuyNow}
-                            disabled={buying}
-                            className="w-full sm:w-auto min-w-[180px] px-6 py-3 rounded-[6px] bg-[#2457FF] text-white font-semibold hover:bg-[#1c47da] disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
-                        >
-                            {buying ? (
-                                <>
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    Processing…
-                                </>
-                            ) : (
-                                purchaseCta.buttonLabel || buyLabel
-                            )}
-                        </button>
-                    </div>
-                </div>
-            )}
-
-            {isOwned && course.status === "PUBLISHED" && (
-                <div className="mt-4 border-t border-[#E4E1D8] bg-white p-3 sm:hidden">
-                    <a
-                        href="#"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document
-                                .getElementById("your-content")
-                                ?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="w-full py-3.5 rounded-[6px] bg-[#111318] text-white font-semibold flex items-center justify-center gap-2"
-                    >
-                        <Download className="w-4 h-4" />
-                        Open my content
-                    </a>
-                </div>
-            )}
         </>
     );
 }
