@@ -1460,7 +1460,7 @@ export default function CurrentAffairsDetailPage() {
             />
 
             <main
-                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-14 sm:pt-20 pb-24 sm:pb-10 px-3 sm:px-6 font-[family-name:var(--font-body)]`}
+                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-14 sm:pt-20 pb-10 sm:pb-10 px-3 sm:px-6 font-[family-name:var(--font-body)]`}
             >
                 <div className="max-w-6xl mx-auto">
                     {/* BACK */}
@@ -1537,7 +1537,7 @@ export default function CurrentAffairsDetailPage() {
                         </div>
 
                         {/* PURCHASE PANEL */}
-                        <div className="bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-8 lg:sticky lg:top-24 shadow-[0_8px_30px_rgba(17,19,24,0.06)] lg:shadow-none">
+                        <div className="bg-white rounded-3xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-8 lg:sticky lg:top-24 shadow-[0_10px_40px_rgba(17,19,24,0.07)] lg:shadow-none">
                             <div className="lg:hidden relative aspect-[16/8.5] min-h-[145px] max-h-[210px] rounded-xl overflow-hidden border border-[#E4E1D8] mb-5 -mt-1">
                                 {course.imageUrl ? (
                                     <img
@@ -1650,7 +1650,7 @@ export default function CurrentAffairsDetailPage() {
                                             course.status !== "PUBLISHED" ||
                                             course.purchase?.available === false
                                         }
-                                        className="mt-5 w-full py-3.5 sm:py-4 rounded-xl sm:rounded-[6px] bg-[#2457FF] text-white font-semibold text-[15.5px] hover:bg-[#1c47da] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
+                                        className="mt-5 w-full py-3.5 sm:py-4 rounded-2xl sm:rounded-[6px] bg-[#2457FF] text-white font-semibold text-[15.5px] hover:bg-[#1c47da] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
                                     >
                                         {buying ? (
                                             <>
