@@ -185,8 +185,8 @@ function PriceBreakdown({ course, offerPreview, currency, discount, total, isFre
     ].filter(Boolean);
 
     return (
-        <div className="mt-6 rounded-[6px] bg-[#F7F4ED] border border-[#E4E1D8] p-5">
-            <div className="space-y-2.5 text-[14px]">
+        <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-[6px] bg-[#F7F4ED] border border-[#E4E1D8] p-3.5 sm:p-5">
+            <div className="space-y-2 text-[13px] sm:text-[14px]">
                 {rows.map((row) => (
                     <div
                         key={row.label}
@@ -208,7 +208,7 @@ function PriceBreakdown({ course, offerPreview, currency, discount, total, isFre
                 ))}
             </div>
 
-            <div className="mt-4 pt-4 border-t border-[#D9D6CE] flex items-center justify-between">
+            <div className="mt-3 pt-3 border-t border-[#D9D6CE] flex items-center justify-between">
                 <span className="font-[family-name:var(--font-display)] text-[17px] font-semibold text-[#111318]">
                     You pay
                 </span>
@@ -244,7 +244,7 @@ function OfferCodeBox({
                 Offer code
             </label>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col xs:flex-row gap-2">
                 <div className="relative min-w-0 flex-1">
                     <Tag
                         className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9C9A91]"
@@ -267,7 +267,7 @@ function OfferCodeBox({
                     type="button"
                     onClick={onApply}
                     disabled={loading}
-                    className="shrink-0 px-5 py-3 rounded-[6px] border border-[#111318] bg-white text-[#111318] font-semibold text-[14px] hover:bg-[#111318] hover:text-white disabled:opacity-50 disabled:pointer-events-none transition inline-flex items-center gap-2"
+                    className="w-full xs:w-auto shrink-0 px-5 py-3 rounded-[6px] border border-[#111318] bg-white text-[#111318] font-semibold text-[14px] hover:bg-[#111318] hover:text-white disabled:opacity-50 disabled:pointer-events-none transition inline-flex items-center gap-2"
                 >
                     {loading && (
                         <Loader2
@@ -620,7 +620,7 @@ function RenderSection({ section }) {
 
                         {content.workflow && (
                             <div className="md:col-span-2 rounded-[6px] bg-[#F7F4ED] border border-[#E4E1D8] p-5">
-                                <p className="text-[12.5px] font-semibold uppercase tracking-wide text-[#5B5A55]">
+                                <p className="text-[11px] sm:text-[12.5px] font-semibold uppercase tracking-wide text-[#5B5A55]">
                                     Workflow
                                 </p>
 
@@ -652,7 +652,7 @@ function RenderSection({ section }) {
 
                     {Array.isArray(content.features) &&
                         content.features.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-2">
+                            <div className="mt-5 sm:mt-6 flex flex-wrap gap-1.5 sm:gap-2">
                                 {content.features.map((feature) => (
                                     <span
                                         key={feature}
@@ -859,7 +859,7 @@ function SkeletonPage() {
         <main className="min-h-screen bg-[#F7F4ED] pt-24 pb-24 px-4 sm:px-6">
             <style>{`@keyframes shimmer { 100% { transform: translateX(100%); } }`}</style>
 
-            <div className="max-w-6xl mx-auto">
+            <div className="w-full max-w-6xl mx-auto">
                 <SkeletonBlock className="h-4 w-32 mb-8" />
 
                 <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
@@ -1466,7 +1466,7 @@ export default function CurrentAffairsDetailPage() {
                     {/* BACK */}
                     <button
                         onClick={() => router.push("/current-affairs")}
-                        className="mb-8 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#5B5A55] hover:text-[#111318] transition"
+                        className="mb-5 sm:mb-8 inline-flex items-center gap-1.5 text-[13px] sm:text-[13.5px] font-semibold text-[#5B5A55] hover:text-[#111318] transition"
                     >
                         <ArrowLeft className="w-3.5 h-3.5" />
                         Current Affairs
@@ -1476,16 +1476,16 @@ export default function CurrentAffairsDetailPage() {
                         HERO
                     ================================= */}
 
-                    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-10 items-start">
+                    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-5 sm:gap-8 lg:gap-10 items-start">
                         {/* LEFT */}
                         <div>
                             <Eyebrow>Current Affairs</Eyebrow>
 
-                            <h1 className="mt-3 font-[family-name:var(--font-display)] text-[38px] sm:text-[48px] leading-[1.05] font-semibold text-[#111318]">
+                            <h1 className="mt-2.5 sm:mt-3 font-[family-name:var(--font-display)] text-[32px] sm:text-[48px] leading-[1.08] font-semibold tracking-[-0.02em] text-[#111318] break-words">
                                 {course.name}
                             </h1>
 
-                            <p className="mt-5 text-[16px] leading-8 text-[#5B5A55] max-w-lg">
+                            <p className="mt-4 sm:mt-5 text-[14.5px] sm:text-[16px] leading-7 sm:leading-8 text-[#5B5A55] max-w-xl">
                                 {course.description?.long ||
                                     course.description?.short ||
                                     "Complete exam-oriented Current Affairs preparation."}
@@ -1496,7 +1496,7 @@ export default function CurrentAffairsDetailPage() {
                                     {badges.map((badge) => (
                                         <span
                                             key={badge}
-                                            className="px-3 py-1.5 rounded-[4px] border border-[#D9D6CE] bg-white text-[13px] font-medium text-[#33322E]"
+                                            className="px-2.5 py-1.5 rounded-full border border-[#D9D6CE] bg-white text-[11.5px] sm:text-[13px] font-medium text-[#33322E]"
                                         >
                                             {badge}
                                         </span>
@@ -1506,13 +1506,13 @@ export default function CurrentAffairsDetailPage() {
 
                             {Array.isArray(highlightsContent?.items) &&
                                 highlightsContent.items.length > 0 && (
-                                    <ul className="mt-8 space-y-3">
+                                    <ul className="mt-6 sm:mt-8 space-y-2.5 sm:space-y-3">
                                         {highlightsContent.items
                                             .slice(0, 4)
                                             .map((item, index) => (
                                                 <li
                                                     key={index}
-                                                    className="flex gap-3 text-[14.5px] text-[#33322E]"
+                                                    className="flex gap-2.5 text-[13.5px] sm:text-[14.5px] leading-6 text-[#33322E]"
                                                 >
                                                     <Check className="w-4.5 h-4.5 text-[#2457FF] shrink-0 mt-0.5" />
                                                     {String(item)}
@@ -1521,7 +1521,7 @@ export default function CurrentAffairsDetailPage() {
                                     </ul>
                                 )}
 
-                            <div className="mt-10 hidden lg:block relative h-[300px] rounded-[6px] overflow-hidden border border-[#E4E1D8]">
+                            <div className="mt-8 hidden lg:block relative h-[300px] rounded-2xl overflow-hidden border border-[#E4E1D8]">
                                 {course.imageUrl ? (
                                     <img
                                         src={course.imageUrl}
@@ -1537,8 +1537,8 @@ export default function CurrentAffairsDetailPage() {
                         </div>
 
                         {/* PURCHASE PANEL */}
-                        <div className="bg-white rounded-[6px] border border-[#E4E1D8] p-6 sm:p-8 lg:sticky lg:top-24">
-                            <div className="lg:hidden relative h-[200px] rounded-[6px] overflow-hidden border border-[#E4E1D8] mb-6 -mt-1">
+                        <div className="bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-8 lg:sticky lg:top-24 shadow-[0_8px_30px_rgba(17,19,24,0.06)] lg:shadow-none">
+                            <div className="lg:hidden relative aspect-[16/8.5] min-h-[145px] max-h-[210px] rounded-xl overflow-hidden border border-[#E4E1D8] mb-5 -mt-1">
                                 {course.imageUrl ? (
                                     <img
                                         src={course.imageUrl}
@@ -1552,19 +1552,19 @@ export default function CurrentAffairsDetailPage() {
                                 )}
                             </div>
 
-                            <div className="flex items-end justify-between gap-4">
+                            <div className="flex items-end justify-between gap-3">
                                 <div>
                                     <p className="text-[12.5px] font-semibold uppercase tracking-wide text-[#5B5A55]">
                                         Final price
                                     </p>
 
-                                    <p className="mt-1 font-[family-name:var(--font-display)] text-[36px] font-semibold text-[#111318] leading-none">
+                                    <p className="mt-1 font-[family-name:var(--font-display)] text-[30px] sm:text-[36px] font-semibold text-[#111318] leading-none">
                                         {isFree ? "Free" : money(total, currency)}
                                     </p>
                                 </div>
 
                                 {discount > 0 && !isFree && (
-                                    <span className="px-2.5 py-1.5 rounded-[4px] bg-[#B7D65A]/25 text-[#4C5A22] text-[12.5px] font-bold">
+                                    <span className="px-2.5 py-1.5 rounded-full bg-[#B7D65A]/25 text-[#4C5A22] text-[11px] sm:text-[12.5px] font-bold whitespace-nowrap">
                                         Save {money(discount, currency)}
                                     </span>
                                 )}
@@ -1596,7 +1596,7 @@ export default function CurrentAffairsDetailPage() {
                             )}
 
                             {paymentNotice && (
-                                <div className="mt-6 rounded-[6px] border border-[#2457FF]/30 bg-[#2457FF]/5 p-4 flex items-start gap-3">
+                                <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-[6px] border border-[#2457FF]/30 bg-[#2457FF]/5 p-3.5 sm:p-4 flex items-start gap-2.5 sm:gap-3">
                                     <Loader2 className="w-4 h-4 text-[#2457FF] animate-spin shrink-0 mt-0.5" />
                                     <p className="text-[13.5px] text-[#111318]">
                                         {paymentNotice}
@@ -1605,7 +1605,7 @@ export default function CurrentAffairsDetailPage() {
                             )}
 
                             {buyError && (
-                                <div className="mt-6 rounded-[6px] border border-[#F0C7BC] bg-[#FDF3F0] p-4">
+                                <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-[6px] border border-[#F0C7BC] bg-[#FDF3F0] p-3.5 sm:p-4">
                                     <p className="font-semibold text-[13.5px] text-[#C4432B] flex items-center gap-1.5">
                                         <AlertCircle className="w-4 h-4" />
                                         Payment error
@@ -1618,7 +1618,7 @@ export default function CurrentAffairsDetailPage() {
                             )}
 
                             {isOwned ? (
-                                <div className="mt-6 rounded-[6px] border border-[#B7D65A]/50 bg-[#B7D65A]/12 p-5">
+                                <div className="mt-5 rounded-xl sm:rounded-[6px] border border-[#B7D65A]/50 bg-[#B7D65A]/12 p-4 sm:p-5">
                                     <p className="font-semibold text-[14.5px] text-[#4C5A22] flex items-center gap-1.5">
                                         <CircleCheck className="w-4.5 h-4.5" />
                                         Purchased — unlocked
@@ -1650,7 +1650,7 @@ export default function CurrentAffairsDetailPage() {
                                             course.status !== "PUBLISHED" ||
                                             course.purchase?.available === false
                                         }
-                                        className="mt-6 w-full py-4 rounded-[6px] bg-[#2457FF] text-white font-semibold text-[15.5px] hover:bg-[#1c47da] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
+                                        className="mt-5 w-full py-3.5 sm:py-4 rounded-xl sm:rounded-[6px] bg-[#2457FF] text-white font-semibold text-[15.5px] hover:bg-[#1c47da] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
                                     >
                                         {buying ? (
                                             <>
@@ -1666,7 +1666,7 @@ export default function CurrentAffairsDetailPage() {
                                     </button>
 
                                     {course.purchase?.requiresLogin && (
-                                        <p className="mt-3 text-center text-[12px] text-[#9C9A91]">
+                                        <p className="mt-2.5 text-center text-[11.5px] sm:text-[12px] text-[#9C9A91]">
                                             Login is required before purchase.
                                         </p>
                                     )}
@@ -1674,7 +1674,7 @@ export default function CurrentAffairsDetailPage() {
                             )}
 
                             {course.schedule && (
-                                <div className="mt-6 pt-6 border-t border-[#E4E1D8] text-[13px] space-y-2">
+                                <div className="mt-5 pt-5 border-t border-[#E4E1D8] text-[12.5px] sm:text-[13px] space-y-2">
                                     {course.schedule?.startDate && (
                                         <div className="flex justify-between gap-5">
                                             <span className="text-[#9C9A91]">Start</span>
@@ -1706,7 +1706,7 @@ export default function CurrentAffairsDetailPage() {
                     ================================= */}
 
                     {isOwned && (
-                        <section className="mt-10 bg-white rounded-[6px] border border-[#E4E1D8] p-6 sm:p-10">
+                        <section className="mt-6 sm:mt-10 bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-10">
                             <SectionHeading
                                 title="Your content"
                                 subtitle={
@@ -1739,7 +1739,7 @@ export default function CurrentAffairsDetailPage() {
                     ================================= */}
 
                     {notifications.length > 0 && (
-                        <section className="mt-8 bg-white rounded-[6px] border border-[#E4E1D8] p-6 sm:p-10">
+                        <section className="mt-6 sm:mt-8 bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-10">
                             <div className="flex items-center gap-2 mb-6">
                                 <Bell className="w-4.5 h-4.5 text-[#2457FF]" />
                                 <h2 className="font-[family-name:var(--font-display)] text-[20px] font-semibold text-[#111318]">
@@ -1824,13 +1824,13 @@ export default function CurrentAffairsDetailPage() {
 
             {!isOwned && course.status === "PUBLISHED" && (
                 <div
-                    className={`fixed inset-x-0 bottom-0 z-50 border-t border-[#E4E1D8] bg-white p-3 shadow-[0_-8px_30px_rgba(17,19,24,0.10)] transition-transform duration-300 sm:static sm:mt-8 sm:border-t sm:p-4 sm:shadow-none sm:translate-y-0 ${
+                    className={`fixed inset-x-0 bottom-0 z-50 border-t border-[#E4E1D8] bg-white px-3 pt-2.5 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(17,19,24,0.10)] transition-transform duration-300 sm:static sm:mt-8 sm:border-t sm:p-4 sm:shadow-none sm:translate-y-0 ${
                         scrolledPastHero
                             ? "translate-y-0"
                             : "translate-y-full"
                     }`}
                 >
-                    <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                    <div className="mx-auto flex max-w-6xl flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-4">
                         <div className="hidden sm:block flex-1 min-w-0">
                             <p className="font-[family-name:var(--font-display)] font-semibold text-[#111318] truncate">
                                 {course.name}
@@ -1847,7 +1847,7 @@ export default function CurrentAffairsDetailPage() {
                         <button
                             onClick={handleBuyNow}
                             disabled={buying}
-                            className="w-full sm:w-auto min-w-[180px] px-7 py-3.5 rounded-[6px] bg-[#2457FF] text-white font-semibold hover:bg-[#1c47da] disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
+                            className="w-full sm:w-auto min-w-[180px] px-6 py-3 rounded-[6px] bg-[#2457FF] text-white font-semibold hover:bg-[#1c47da] disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
                         >
                             {buying ? (
                                 <>
