@@ -244,7 +244,7 @@ function OfferCodeBox({
                 Offer code
             </label>
 
-            <div className="flex flex-col xs:flex-row gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
                 <div className="relative min-w-0 flex-1">
                     <Tag
                         className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9C9A91]"
@@ -267,7 +267,7 @@ function OfferCodeBox({
                     type="button"
                     onClick={onApply}
                     disabled={loading}
-                    className="w-full xs:w-auto shrink-0 px-5 py-3 rounded-[6px] border border-[#111318] bg-white text-[#111318] font-semibold text-[14px] hover:bg-[#111318] hover:text-white disabled:opacity-50 disabled:pointer-events-none transition inline-flex items-center gap-2"
+                    className="w-full sm:w-auto shrink-0 px-5 py-3 rounded-[6px] border border-[#111318] bg-white text-[#111318] font-semibold text-[14px] hover:bg-[#111318] hover:text-white disabled:opacity-50 disabled:pointer-events-none transition inline-flex items-center gap-2"
                 >
                     {loading && (
                         <Loader2
@@ -1460,7 +1460,7 @@ export default function CurrentAffairsDetailPage() {
             />
 
             <main
-                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-20 pb-10 px-4 sm:px-6 font-[family-name:var(--font-body)]`}
+                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-14 sm:pt-20 pb-24 sm:pb-10 px-3 sm:px-6 font-[family-name:var(--font-body)]`}
             >
                 <div className="max-w-6xl mx-auto">
                     {/* BACK */}
