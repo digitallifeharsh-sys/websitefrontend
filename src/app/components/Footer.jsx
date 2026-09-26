@@ -91,20 +91,31 @@ export default function Footer() {
             <h3 className="font-black text-sm text-slate-900 mb-4">Contact</h3>
             <ul className="space-y-4 text-sm font-semibold text-slate-600">
               <li className="flex items-center gap-3">
-                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Phone size={16} /></span>
-                8920830582
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <Phone size={16} />
+                </span>
+                9711909570
               </li>
+
               <li className="flex items-center gap-3">
-                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-xs">WA</span>
-                8920830582
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-xs">
+                  WA
+                </span>
+                9711909570
               </li>
+
               <li className="flex items-center gap-3">
-                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Mail size={16} /></span>
-                manishvermaclasses@gmail.com
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <Phone size={16} />
+                </span>
+                8882011045
               </li>
+
               <li className="flex items-center gap-3">
-                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><Phone size={16} /></span>
-                7982803422
+                <span className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <Mail size={16} />
+                </span>
+                delhinationalopenschool@gmail.com
               </li>
             </ul>
           </div>
