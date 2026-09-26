@@ -1,9 +1,423 @@
 "use client";
-import { BookOpen, MessageCircle, Phone, Target } from "lucide-react";
 
-export default function Contact(){
- return <section className="bg-[#f4f3ef] py-24"><div className="max-w-6xl mx-auto px-6"><div className="grid lg:grid-cols-3 gap-5">
-  <div className="lg:col-span-2 rounded-3xl bg-black text-white p-8 lg:p-10 relative overflow-hidden"><div className="absolute -right-16 -top-16 w-52 h-52 rounded-full border border-white/10"/><div className="absolute right-8 top-8 w-28 h-28 rounded-3xl border border-white/10 rotate-12"/><p className="text-xs font-bold tracking-[.2em] text-zinc-400">NEED HELP?</p><h2 className="mt-3 text-4xl lg:text-5xl font-black">Talk to DNS.</h2><p className="mt-4 max-w-xl text-zinc-400">Course selection, admission help or learning support — contact our team directly.</p><div className="grid sm:grid-cols-3 gap-3 mt-10"><a href="tel:8920830582" className="rounded-2xl bg-white/10 p-4 hover:bg-white/15 transition"><Phone size={19}/><b className="block mt-3 text-sm">Call</b><span className="text-xs text-zinc-400">8920830582</span></a><a href="https://wa.me/918920830582" target="_blank" rel="noreferrer" className="rounded-2xl bg-white/10 p-4 hover:bg-white/15 transition"><MessageCircle size={19}/><b className="block mt-3 text-sm">WhatsApp</b><span className="text-xs text-zinc-400">Chat with us</span></a><a href="mailto:manishvermaclasses@gmail.com" className="rounded-2xl bg-white/10 p-4 hover:bg-white/15 transition"><BookOpen size={19}/><b className="block mt-3 text-sm">Email</b><span className="text-xs text-zinc-400">Send enquiry</span></a></div></div>
-  <div className="rounded-3xl bg-white border border-zinc-200 p-7 flex flex-col justify-between"><div><div className="w-12 h-12 rounded-2xl bg-zinc-100 flex items-center justify-center"><Target size={21}/></div><h3 className="mt-5 text-2xl font-black">Start learning</h3><p className="mt-2 text-sm text-zinc-500">Choose a course and complete your purchase online.</p></div><a href="/courses" className="mt-8 rounded-2xl bg-black text-white py-4 text-center font-bold">Browse Courses →</a></div>
- </div></div></section>;
+import { BookOpen, MessageCircle, Phone, Target } from "lucide-react";
+import { motion } from "framer-motion";
+
+const contactOptions = [
+  {
+    icon: Phone,
+    title: "Call",
+    text: "8920830582",
+    href: "tel:8920830582",
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    text: "Chat with us",
+    href: "https://wa.me/918920830582",
+  },
+  {
+    icon: BookOpen,
+    title: "Email",
+    text: "Send enquiry",
+    href: "mailto:manishvermaclasses@gmail.com",
+  },
+];
+
+export default function Contact() {
+  return (
+    <section className="relative w-full overflow-hidden bg-slate-50 py-20 lg:py-28">
+      {/* Background glow */}
+      <div className="pointer-events-none absolute left-[10%] top-0 h-80 w-80 rounded-full bg-indigo-300/20 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[10%] top-20 h-80 w-80 rounded-full bg-violet-300/20 blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+
+        {/* Heading */}
+        <div className="mx-auto max-w-3xl text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="
+              mb-6
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-indigo-100
+              bg-indigo-50
+              px-4
+              py-1.5
+              text-sm
+              font-semibold
+              text-indigo-600
+            "
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
+              <span className="relative h-2.5 w-2.5 rounded-full bg-indigo-500" />
+            </span>
+
+            Need Help?
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="
+              text-4xl
+              font-black
+              leading-[0.95]
+              tracking-tight
+              text-slate-900
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Talk to DNS.
+
+            <span className="mt-2 block bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              We’re Here to Help.
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="
+              mx-auto
+              mt-6
+              max-w-2xl
+              text-lg
+              leading-8
+              text-slate-600
+            "
+          >
+            Course selection, admission help or learning support —
+            contact our team directly.
+          </motion.p>
+
+        </div>
+
+        {/* Main Contact Layout */}
+        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+
+          {/* Contact Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="group relative lg:col-span-2"
+          >
+            {/* Back Layer */}
+            <div
+              className="
+                absolute
+                inset-0
+                translate-x-2
+                translate-y-2
+                rounded-[30px]
+                border
+                border-indigo-100
+                bg-indigo-50
+              "
+            />
+
+            {/* Main Card */}
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[30px]
+                border
+                border-slate-200
+                bg-white
+                p-7
+                shadow-[0_20px_60px_rgba(15,23,42,0.07)]
+                transition-all
+                duration-500
+                group-hover:border-indigo-200
+                group-hover:shadow-[0_30px_80px_rgba(79,70,229,0.14)]
+                lg:p-10
+              "
+            >
+
+              {/* Decorative Glow */}
+              <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-indigo-100/70 blur-3xl" />
+
+              {/* Decorative Shapes */}
+              <div className="pointer-events-none absolute right-8 top-8 h-24 w-24 rounded-3xl border border-indigo-100 rotate-12" />
+
+              <div className="pointer-events-none absolute right-20 top-20 h-12 w-12 rounded-2xl bg-violet-100 rotate-12" />
+
+              <div className="relative z-10">
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/20">
+                    <MessageCircle size={22} />
+                  </div>
+
+                  <span className="text-sm font-bold text-indigo-600">
+                    Contact Support
+                  </span>
+                </div>
+
+                <h3 className="mt-7 max-w-xl text-3xl font-black tracking-tight text-slate-900 lg:text-4xl">
+                  Have a question?
+                  <span className="block text-slate-400">
+                    Let's talk.
+                  </span>
+                </h3>
+
+                <p className="mt-4 max-w-xl text-sm leading-6 text-slate-500 lg:text-base">
+                  Get help with courses, admission, payments or your
+                  learning journey. Our team is ready to assist you.
+                </p>
+
+                {/* Contact Options */}
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+
+                  {contactOptions.map(
+                    ({ icon: Icon, title, text, href }) => (
+                      <a
+                        key={title}
+                        href={href}
+                        target={title === "WhatsApp" ? "_blank" : undefined}
+                        rel={
+                          title === "WhatsApp"
+                            ? "noreferrer"
+                            : undefined
+                        }
+                        className="
+                          group/item
+                          rounded-2xl
+                          border
+                          border-slate-200
+                          bg-slate-50
+                          p-4
+                          transition-all
+                          duration-300
+                          hover:-translate-y-1
+                          hover:border-indigo-200
+                          hover:bg-indigo-50
+                          hover:shadow-lg
+                        "
+                      >
+                        <div
+                          className="
+                            flex
+                            h-10
+                            w-10
+                            items-center
+                            justify-center
+                            rounded-xl
+                            bg-white
+                            text-slate-700
+                            shadow-sm
+                            transition-all
+                            group-hover/item:bg-indigo-600
+                            group-hover/item:text-white
+                          "
+                        >
+                          <Icon size={19} />
+                        </div>
+
+                        <b className="mt-4 block text-sm text-slate-900">
+                          {title}
+                        </b>
+
+                        <span className="mt-1 block truncate text-xs text-slate-500">
+                          {text}
+                        </span>
+                      </a>
+                    )
+                  )}
+
+                </div>
+              </div>
+
+              {/* Bottom Accent */}
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  left-1/2
+                  h-1
+                  w-0
+                  -translate-x-1/2
+                  rounded-full
+                  bg-gradient-to-r
+                  from-indigo-500
+                  to-violet-500
+                  transition-all
+                  duration-500
+                  group-hover:w-32
+                "
+              />
+
+            </div>
+          </motion.div>
+
+          {/* Start Learning Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            whileHover={{ y: -8 }}
+            className="group relative"
+          >
+
+            {/* Back Layer */}
+            <div
+              className="
+                absolute
+                inset-0
+                translate-x-2
+                translate-y-2
+                rounded-[30px]
+                border
+                border-violet-100
+                bg-violet-50
+              "
+            />
+
+            {/* Card */}
+            <div
+              className="
+                relative
+                flex
+                min-h-[100%]
+                flex-col
+                justify-between
+                overflow-hidden
+                rounded-[30px]
+                border
+                border-slate-200
+                bg-white
+                p-7
+                shadow-[0_20px_60px_rgba(15,23,42,0.07)]
+                transition-all
+                duration-500
+                group-hover:border-violet-200
+                group-hover:shadow-[0_30px_80px_rgba(124,58,237,0.14)]
+              "
+            >
+
+              {/* Glow */}
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-100 blur-3xl" />
+
+              <div className="relative z-10">
+
+                {/* Icon */}
+                <div className="relative h-14 w-14">
+
+                  <div className="absolute inset-0 translate-x-1 translate-y-1 rounded-2xl bg-violet-100 rotate-6" />
+
+                  <div
+                    className="
+                      relative
+                      flex
+                      h-14
+                      w-14
+                      items-center
+                      justify-center
+                      rounded-2xl
+                      bg-gradient-to-br
+                      from-indigo-600
+                      to-violet-600
+                      text-white
+                      shadow-lg
+                      shadow-indigo-500/20
+                      transition-transform
+                      duration-300
+                      group-hover:scale-110
+                    "
+                  >
+                    <Target size={23} />
+                  </div>
+
+                </div>
+
+                <p className="mt-8 text-xs font-bold tracking-[0.18em] text-indigo-600">
+                  READY TO START?
+                </p>
+
+                <h3 className="mt-3 text-3xl font-black tracking-tight text-slate-900">
+                  Start
+                  <span className="block bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                    Learning.
+                  </span>
+                </h3>
+
+                <p className="mt-4 text-sm leading-6 text-slate-500">
+                  Choose a course and continue your learning journey
+                  with DNS Academy.
+                </p>
+
+              </div>
+
+              <a
+                href="/courses"
+                className="
+                  relative
+                  z-10
+                  mt-8
+                  flex
+                  items-center
+                  justify-center
+                  rounded-2xl
+                  bg-slate-950
+                  py-4
+                  font-bold
+                  text-white
+                  shadow-lg
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-indigo-600
+                  hover:shadow-indigo-500/20
+                "
+              >
+                Browse Courses
+                <span className="ml-2 transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+
+              {/* Bottom Accent */}
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  left-1/2
+                  h-1
+                  w-0
+                  -translate-x-1/2
+                  rounded-full
+                  bg-gradient-to-r
+                  from-indigo-500
+                  to-violet-500
+                  transition-all
+                  duration-500
+                  group-hover:w-24
+                "
+              />
+
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
 }
