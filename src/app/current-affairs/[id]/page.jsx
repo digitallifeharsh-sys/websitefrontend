@@ -942,6 +942,8 @@ export default function CurrentAffairsDetailPage() {
     const [offerError, setOfferError] = useState("");
     const [offerPreview, setOfferPreview] = useState(null);
 
+    const [scrolledPastHero, setScrolledPastHero] = useState(false);
+
     /* Reusable redirect-to-login helper. Preserves the existing
        redirect-back-here contract used across the page. */
     const redirectToLogin = useCallback(() => {
@@ -1362,6 +1364,21 @@ export default function CurrentAffairsDetailPage() {
             setBuying(false);
         }
     };
+
+    /* =========================================
+       MOBILE PURCHASE OVERLAY
+    ========================================= */
+
+    useEffect(() => {
+        const onScroll = () => {
+            setScrolledPastHero(window.scrollY > 560);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     /* =========================================
        LOADING / NOT FOUND
@@ -1807,7 +1824,11 @@ export default function CurrentAffairsDetailPage() {
 
             {!isOwned && course.status === "PUBLISHED" && (
                 <div
-                    className="mt-8 border-t border-[#E4E1D8] bg-white p-3 sm:p-4"
+                    className={`fixed inset-x-0 bottom-0 z-50 border-t border-[#E4E1D8] bg-white p-3 shadow-[0_-8px_30px_rgba(17,19,24,0.10)] transition-transform duration-300 sm:static sm:mt-8 sm:border-t sm:p-4 sm:shadow-none sm:translate-y-0 ${
+                        scrolledPastHero
+                            ? "translate-y-0"
+                            : "translate-y-full"
+                    }`}
                 >
                     <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                         <div className="hidden sm:block flex-1 min-w-0">
