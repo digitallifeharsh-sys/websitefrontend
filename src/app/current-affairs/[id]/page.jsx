@@ -60,6 +60,16 @@ const body = Inter({
 
 const API_URL = "/backend-api";
 
+const getImageUrl = (value) => {
+    if (!value) return "";
+    const raw = String(value).trim();
+    const uploadsIndex = raw.indexOf("/uploads/");
+    if (raw.startsWith("/backend-api/")) return raw;
+    if (uploadsIndex >= 0) return "/backend-api" + raw.slice(uploadsIndex);
+    if (raw.startsWith("/")) return raw;
+    return raw;
+};
+
 const getToken = () => {
     if (typeof window === "undefined") {
         return null;
@@ -1445,7 +1455,7 @@ export default function CurrentAffairsDetailPage() {
             />
 
             <main
-                className={`${display.variable} ${body.variable} min-h-screen bg-[#F7F4ED] pt-20 pb-32 px-4 sm:px-6 font-[family-name:var(--font-body)]`}
+                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-20 pb-10 px-4 sm:px-6 font-[family-name:var(--font-body)]`}
             >
                 <div className="max-w-6xl mx-auto">
                     {/* BACK */}
@@ -1809,13 +1819,13 @@ export default function CurrentAffairsDetailPage() {
 
             {!isOwned && course.status === "PUBLISHED" && (
                 <div
-                    className={`fixed bottom-0 left-0 right-0 z-40 border-t border-[#E4E1D8] bg-white/97 backdrop-blur p-3 sm:p-4 transition-transform duration-200 ${
+                    className={`mt-8 border-t border-[#E4E1D8] bg-white p-3 sm:p-4 ${
                         scrolledPastHero
                             ? "translate-y-0"
                             : "translate-y-0 sm:translate-y-full"
                     }`}
                 >
-                    <div className="max-w-6xl mx-auto flex items-center gap-4">
+                    <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                         <div className="hidden sm:block flex-1 min-w-0">
                             <p className="font-[family-name:var(--font-display)] font-semibold text-[#111318] truncate">
                                 {course.name}
@@ -1848,7 +1858,7 @@ export default function CurrentAffairsDetailPage() {
             )}
 
             {isOwned && course.status === "PUBLISHED" && (
-                <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#E4E1D8] bg-white/97 backdrop-blur p-3 sm:p-4 sm:hidden">
+                <div className="mt-4 border-t border-[#E4E1D8] bg-white p-3 sm:hidden">
                     <a
                         href="#"
                         onClick={(e) => {
