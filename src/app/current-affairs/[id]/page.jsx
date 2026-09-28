@@ -1436,370 +1436,53 @@ export default function CurrentAffairsDetailPage() {
 
     return (
         <>
-            <Script
-                src="https://sdk.cashfree.com/js/v3/cashfree.js"
-                strategy="afterInteractive"
-            />
-
-            <main
-                className={`${display.variable} ${body.variable} min-h-screen overflow-x-hidden bg-[#F7F4ED] pt-14 sm:pt-20 pb-10 sm:pb-10 px-3 sm:px-6 font-[family-name:var(--font-body)]`}
-            >
-                <div className="max-w-6xl mx-auto">
-                    {/* BACK */}
-                    <button
-                        onClick={() => router.push("/current-affairs")}
-                        className="mb-5 sm:mb-8 inline-flex items-center gap-1.5 text-[13px] sm:text-[13.5px] font-semibold text-[#5B5A55] hover:text-[#111318] transition"
-                    >
-                        <ArrowLeft className="w-3.5 h-3.5" />
-                        Current Affairs
+            <Script src="https://sdk.cashfree.com/js/v3/cashfree.js" strategy="afterInteractive" />
+            <main className={`${display.variable} ${body.variable} min-h-screen bg-slate-50 px-4 pb-16 pt-24 font-[family-name:var(--font-body)] sm:px-6 sm:pt-28`}>
+                <div className="mx-auto max-w-6xl">
+                    <button onClick={() => router.push("/current-affairs")} className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-950">
+                        <ArrowLeft className="h-4 w-4" /> Current Affairs
                     </button>
-
-                    {/* =================================
-                        HERO
-                    ================================= */}
-
-                    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-5 sm:gap-8 lg:gap-10 items-start">
-                        {/* LEFT */}
-                        <div>
-                            <Eyebrow>Current Affairs</Eyebrow>
-
-                            <h1 className="mt-2.5 sm:mt-3 font-[family-name:var(--font-display)] text-[32px] sm:text-[48px] leading-[1.08] font-semibold tracking-[-0.02em] text-[#111318] break-words">
-                                {course.name}
-                            </h1>
-
-                            <p className="mt-4 sm:mt-5 text-[14.5px] sm:text-[16px] leading-7 sm:leading-8 text-[#5B5A55] max-w-xl">
-                                {course.description?.long ||
-                                    course.description?.short ||
-                                    "Complete exam-oriented Current Affairs preparation."}
-                            </p>
-
-                            {badges.length > 0 && (
-                                <div className="mt-6 flex flex-wrap gap-2">
-                                    {badges.map((badge) => (
-                                        <span
-                                            key={badge}
-                                            className="px-2.5 py-1.5 rounded-full border border-[#D9D6CE] bg-white text-[11.5px] sm:text-[13px] font-medium text-[#33322E]"
-                                        >
-                                            {badge}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-
-                            {Array.isArray(highlightsContent?.items) &&
-                                highlightsContent.items.length > 0 && (
-                                    <ul className="mt-6 sm:mt-8 space-y-2.5 sm:space-y-3">
-                                        {highlightsContent.items
-                                            .slice(0, 4)
-                                            .map((item, index) => (
-                                                <li
-                                                    key={index}
-                                                    className="flex gap-2.5 text-[13.5px] sm:text-[14.5px] leading-6 text-[#33322E]"
-                                                >
-                                                    <Check className="w-4.5 h-4.5 text-[#2457FF] shrink-0 mt-0.5" />
-                                                    {String(item)}
-                                                </li>
-                                            ))}
-                                    </ul>
-                                )}
-
-                            <div className="mt-8 hidden lg:block relative h-[300px] rounded-2xl overflow-hidden border border-[#E4E1D8]">
-                                {course.imageUrl ? (
-                                    <img
-                                        src={course.imageUrl}
-                                        alt={course.name}
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full bg-[#111318] flex items-center justify-center">
-                                        <Newspaper className="w-10 h-10 text-white/30" />
-                                    </div>
-                                )}
+                    <div className="grid gap-8 lg:grid-cols-[1.08fr_.92fr]">
+                        <section className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.06)]">
+                            <div className="relative aspect-[16/8.5] overflow-hidden bg-slate-100">
+                                {course.imageUrl ? <img src={course.imageUrl} alt={course.name} className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-indigo-50 to-sky-50"><div className="rounded-2xl border border-indigo-100 bg-white px-6 py-4 text-2xl font-black text-indigo-700 shadow-sm">Current Affairs</div></div>}
+                                <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs font-bold text-slate-800 backdrop-blur"><Newspaper className="h-4 w-4 text-indigo-600" /> Current Affairs</div>
                             </div>
-                        </div>
-
-                        {/* PURCHASE PANEL */}
-                        <div className="bg-white rounded-3xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-8 lg:sticky lg:top-24 shadow-[0_10px_40px_rgba(17,19,24,0.07)] lg:shadow-none">
-                            <div className="lg:hidden relative aspect-[16/8.5] min-h-[145px] max-h-[210px] rounded-xl overflow-hidden border border-[#E4E1D8] mb-5 -mt-1">
-                                {course.imageUrl ? (
-                                    <img
-                                        src={course.imageUrl}
-                                        alt={course.name}
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full bg-[#111318] flex items-center justify-center">
-                                        <Newspaper className="w-8 h-8 text-white/30" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex items-end justify-between gap-3">
-                                <div>
-                                    <p className="text-[12.5px] font-semibold uppercase tracking-wide text-[#5B5A55]">
-                                        Final price
-                                    </p>
-
-                                    <p className="mt-1 font-[family-name:var(--font-display)] text-[30px] sm:text-[36px] font-semibold text-[#111318] leading-none">
-                                        {isFree ? "Free" : money(total, currency)}
-                                    </p>
+                            <div className="p-6 sm:p-8">
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">DNS Academy</p>
+                                <h1 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">{course.name}</h1>
+                                <p className="mt-5 max-w-3xl whitespace-pre-line text-sm leading-7 text-slate-600 sm:text-base">{course.description?.long || course.description?.short || "Complete exam-oriented Current Affairs preparation."}</p>
+                                {badges.length > 0 && <div className="mt-5 flex flex-wrap gap-2">{badges.map((badge) => <span key={badge} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700">{badge}</span>)}</div>}
+                                {Array.isArray(highlightsContent?.items) && highlightsContent.items.length > 0 && <div className="mt-7 grid gap-3 sm:grid-cols-2">{highlightsContent.items.slice(0,4).map((item,index)=><div key={index} className="flex gap-3 rounded-2xl bg-slate-50 p-4"><Check className="mt-0.5 h-4.5 w-4.5 shrink-0 text-indigo-600" /><span className="text-sm leading-6 text-slate-700">{String(item)}</span></div>)}</div>}
+                                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                                    <div className="rounded-2xl bg-slate-50 p-4"><ShieldCheck className="h-5 w-5 text-emerald-600" /><p className="mt-2 text-sm font-bold text-slate-900">Verified purchase</p><p className="mt-1 text-xs leading-5 text-slate-500">Access unlocks after server verification.</p></div>
+                                    <div className="rounded-2xl bg-slate-50 p-4"><Lock className="h-5 w-5 text-indigo-600" /><p className="mt-2 text-sm font-bold text-slate-900">Protected documents</p><p className="mt-1 text-xs leading-5 text-slate-500">Paid content stays behind purchase access.</p></div>
+                                    <div className="rounded-2xl bg-slate-50 p-4"><Bell className="h-5 w-5 text-slate-700" /><p className="mt-2 text-sm font-bold text-slate-900">Fresh updates</p><p className="mt-1 text-xs leading-5 text-slate-500">Published notifications appear here.</p></div>
                                 </div>
-
-                                {discount > 0 && !isFree && (
-                                    <span className="px-2.5 py-1.5 rounded-full bg-[#B7D65A]/25 text-[#4C5A22] text-[11px] sm:text-[12.5px] font-bold whitespace-nowrap">
-                                        Save {money(discount, currency)}
-                                    </span>
-                                )}
-                            </div>
-
-                            <PriceBreakdown
-                                course={course}
-                                offerPreview={offerPreview}
-                                currency={currency}
-                                discount={discount}
-                                total={total}
-                                isFree={isFree}
-                            />
-
-                            {!isOwned && !isFree && (
-                                <OfferCodeBox
-                                    offerCode={offerCode}
-                                    setOfferCode={setOfferCode}
-                                    onApply={validateOffer}
-                                    loading={offerLoading}
-                                    error={offerError}
-                                    preview={offerPreview}
-                                    currency={currency}
-                                    onClear={() => {
-                                        setOfferPreview(null);
-                                        setOfferError("");
-                                    }}
-                                />
-                            )}
-
-                            {paymentNotice && (
-                                <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-[6px] border border-[#2457FF]/30 bg-[#2457FF]/5 p-3.5 sm:p-4 flex items-start gap-2.5 sm:gap-3">
-                                    <Loader2 className="w-4 h-4 text-[#2457FF] animate-spin shrink-0 mt-0.5" />
-                                    <p className="text-[13.5px] text-[#111318]">
-                                        {paymentNotice}
-                                    </p>
-                                </div>
-                            )}
-
-                            {buyError && (
-                                <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-[6px] border border-[#F0C7BC] bg-[#FDF3F0] p-3.5 sm:p-4">
-                                    <p className="font-semibold text-[13.5px] text-[#C4432B] flex items-center gap-1.5">
-                                        <AlertCircle className="w-4 h-4" />
-                                        Payment error
-                                    </p>
-
-                                    <p className="mt-1 text-[13.5px] text-[#A8442F]">
-                                        {buyError}
-                                    </p>
-                                </div>
-                            )}
-
-                            {isOwned ? (
-                                <div className="mt-5 rounded-xl sm:rounded-[6px] border border-[#B7D65A]/50 bg-[#B7D65A]/12 p-4 sm:p-5">
-                                    <p className="font-semibold text-[14.5px] text-[#4C5A22] flex items-center gap-1.5">
-                                        <CircleCheck className="w-4.5 h-4.5" />
-                                        Purchased — unlocked
-                                    </p>
-
-                                    <p className="mt-1 text-[13px] text-[#4C5A22]/80">
-                                        Verified by the server.
-                                    </p>
-
-                                    {refundInfo && (
-                                        <p className="mt-3 pt-3 border-t border-[#B7D65A]/40 text-[13px] text-[#4C5A22]">
-                                            Refund:{" "}
-                                            <span className="font-semibold">
-                                                {refundInfo.status || "Processing"}
-                                                {refundInfo.amount
-                                                    ? ` · ${money(refundInfo.amount, currency)}`
-                                                    : ""}
-                                            </span>
-                                        </p>
-                                    )}
-                                </div>
-                            ) : (
-                                <>
-                                    <button
-                                        type="button"
-                                        onClick={handleBuyNow}
-                                        disabled={
-                                            buying ||
-                                            course.status !== "PUBLISHED" ||
-                                            course.purchase?.available === false
-                                        }
-                                        className="mt-5 w-full py-3.5 sm:py-4 rounded-2xl sm:rounded-[6px] bg-[#2457FF] text-white font-semibold text-[15.5px] hover:bg-[#1c47da] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
-                                    >
-                                        {buying ? (
-                                            <>
-                                                <Loader2 className="w-4.5 h-4.5 animate-spin" />
-                                                Creating payment…
-                                            </>
-                                        ) : (
-                                            <>
-                                                <CreditCard className="w-4.5 h-4.5" />
-                                                {purchaseCta.buttonLabel || buyLabel}
-                                            </>
-                                        )}
-                                    </button>
-
-                                    {course.purchase?.requiresLogin && (
-                                        <p className="mt-2.5 text-center text-[11.5px] sm:text-[12px] text-[#9C9A91]">
-                                            Login is required before purchase.
-                                        </p>
-                                    )}
-                                </>
-                            )}
-
-                            {course.schedule && (
-                                <div className="mt-5 pt-5 border-t border-[#E4E1D8] text-[12.5px] sm:text-[13px] space-y-2">
-                                    {course.schedule?.startDate && (
-                                        <div className="flex justify-between gap-5">
-                                            <span className="text-[#9C9A91]">Start</span>
-                                            <span className="font-semibold text-[#33322E]">
-                                                {new Date(
-                                                    course.schedule.startDate
-                                                ).toLocaleDateString()}
-                                            </span>
-                                        </div>
-                                    )}
-
-                                    {course.schedule?.endDate && (
-                                        <div className="flex justify-between gap-5">
-                                            <span className="text-[#9C9A91]">End</span>
-                                            <span className="font-semibold text-[#33322E]">
-                                                {new Date(
-                                                    course.schedule.endDate
-                                                ).toLocaleDateString()}
-                                            </span>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* =================================
-                        PURCHASED CONTENT
-                    ================================= */}
-
-                    {isOwned && (
-                        <section className="mt-6 sm:mt-10 bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-10">
-                            <SectionHeading
-                                title="Your content"
-                                subtitle={
-                                    documents.length === 0
-                                        ? checkingPurchase
-                                            ? "Checking for documents…"
-                                            : "Documents will appear here as they're published."
-                                        : undefined
-                                }
-                            />
-
-                            {documents.length > 0 && (
-                                <div className="grid sm:grid-cols-2 gap-3">
-                                    {documents.map((doc, index) => (
-                                        <DocumentCard
-                                            key={index}
-                                            doc={doc}
-                                            index={index}
-                                            locked={false}
-                                            token={getToken()}
-                                        />
-                                    ))}
-                                </div>
-                            )}
-                        </section>
-                    )}
-
-                    {/* =================================
-                        NOTIFICATIONS
-                    ================================= */}
-
-                    {notifications.length > 0 && (
-                        <section className="mt-6 sm:mt-8 bg-white rounded-2xl sm:rounded-[6px] border border-[#E4E1D8] p-4 sm:p-10">
-                            <div className="flex items-center gap-2 mb-6">
-                                <Bell className="w-4.5 h-4.5 text-[#2457FF]" />
-                                <h2 className="font-[family-name:var(--font-display)] text-[20px] font-semibold text-[#111318]">
-                                    Course updates
-                                </h2>
-                            </div>
-
-                            <div className="space-y-4">
-                                {notifications.map((n, index) => (
-                                    <div
-                                        key={index}
-                                        className="border-l-2 border-[#2457FF] pl-4"
-                                    >
-                                        {n.title && (
-                                            <p className="font-semibold text-[14.5px] text-[#111318]">
-                                                {n.title}
-                                            </p>
-                                        )}
-
-                                        {n.description && (
-                                            <p className="mt-1 text-[13.5px] leading-6 text-[#5B5A55]">
-                                                {n.description}
-                                            </p>
-                                        )}
-
-                                        {(n.activeFrom || n.activePeriod) && (
-                                            <p className="mt-1 text-[12px] text-[#9C9A91]">
-                                                {n.activePeriod ||
-                                                    `From ${n.activeFrom}`}
-                                            </p>
-                                        )}
-                                    </div>
-                                ))}
                             </div>
                         </section>
-                    )}
-
-                    {/* =================================
-                        ENABLED SECTIONS
-                    ================================= */}
-
-                    <div className="mt-10 space-y-6">
-                        {sections.map((section) => (
-                            <RenderSection
-                                key={`${section.key}-${section.sortOrder}`}
-                                section={section}
-                            />
-                        ))}
+                        <aside className="h-fit rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_rgba(15,23,42,0.08)] lg:sticky lg:top-24 sm:p-7">
+                            <div className="flex items-start justify-between gap-4">
+                                <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">Membership / access</p><p className="mt-2 text-4xl font-black tracking-tight text-slate-950">{isFree ? "Free" : money(total,currency)}</p></div>
+                                {discount > 0 && !isFree && <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700">Save {money(discount,currency)}</span>}
+                            </div>
+                            {Array.isArray(course.offers) && course.offers.length > 0 && <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4"><div className="flex items-center gap-2 text-amber-700"><Tag className="h-4 w-4" /><span className="text-xs font-black uppercase tracking-wider">Current offer</span></div><p className="mt-2 font-bold text-slate-900">{course.offers[0].name}</p><p className="mt-1 text-sm text-slate-600">{course.offers[0].type === "PERCENT" ? `${course.offers[0].value}% discount included` : `${money(course.offers[0].value,currency)} discount included`}</p></div>}
+                            <PriceBreakdown course={course} offerPreview={offerPreview} currency={currency} discount={discount} total={total} isFree={isFree} />
+                            {!isOwned && !isFree && <OfferCodeBox offerCode={offerCode} setOfferCode={setOfferCode} onApply={validateOffer} loading={offerLoading} error={offerError} preview={offerPreview} currency={currency} onClear={() => { setOfferPreview(null); setOfferError(""); }} />}
+                            {paymentNotice && <div className="mt-5 rounded-2xl border border-indigo-100 bg-indigo-50 p-4 text-sm text-slate-800"><div className="flex items-start gap-2.5"><Loader2 className="mt-0.5 h-4 w-4 shrink-0 animate-spin text-indigo-600" /><span>{paymentNotice}</span></div></div>}
+                            {buyError && <div className="mt-5 rounded-2xl border border-red-100 bg-red-50 p-4"><p className="flex items-center gap-2 text-sm font-bold text-red-700"><AlertCircle className="h-4 w-4" />Payment error</p><p className="mt-1 text-sm leading-6 text-red-600">{buyError}</p></div>}
+                            {isOwned ? <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4"><p className="flex items-center gap-2 text-sm font-bold text-emerald-700"><CircleCheck className="h-4 w-4" />Purchased — unlocked</p><p className="mt-1 text-xs text-emerald-700/80">Your purchase is verified by the server.</p></div> : <button type="button" onClick={handleBuyNow} disabled={buying || course.status !== "PUBLISHED" || course.purchase?.available === false} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-5 py-4 font-bold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">{buying ? <><Loader2 className="h-4 w-4 animate-spin" />Opening payment...</> : <><CreditCard className="h-4 w-4" />{purchaseCta.buttonLabel || buyLabel}<ArrowRight className="h-4 w-4" /></>}</button>}
+                            {course.schedule?.startDate && <div className="mt-6 border-t border-slate-100 pt-5 text-xs text-slate-500"><div className="flex items-center justify-between gap-4"><span>Start</span><span className="font-semibold text-slate-800">{new Date(course.schedule.startDate).toLocaleDateString("en-IN")}</span></div></div>}
+                        </aside>
                     </div>
-
-                    {/* =================================
-                        LOCKED DOCUMENTS PREVIEW
-                    ================================= */}
-
-                    {!isOwned &&
-                        Array.isArray(course.documents) &&
-                        course.documents.length > 0 && (
-                            <section className="mt-8 bg-white rounded-[6px] border border-[#E4E1D8] p-6 sm:p-10">
-                                <SectionHeading
-                                    title="Included documents"
-                                    subtitle="Documents unlock after a verified purchase."
-                                />
-
-                                <div className="grid sm:grid-cols-2 gap-3">
-                                    {course.documents.map((doc, index) => (
-                                        <DocumentCard
-                                            key={doc.id || index}
-                                            doc={doc}
-                                            index={index}
-                                            locked
-                                        />
-                                    ))}
-                                </div>
-                            </section>
-                        )}
+                    {isOwned && <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-5 sm:p-8"><SectionHeading title="Your content" subtitle={documents.length === 0 ? (checkingPurchase ? "Checking your access..." : "Documents will appear here as they are published.") : undefined} />{documents.length > 0 && <div className="grid gap-3 sm:grid-cols-2">{documents.map((doc,index)=><DocumentCard key={index} doc={doc} index={index} locked={false} token={getToken()} />)}</div>}</section>}
+                    {notifications.length > 0 && <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-5 sm:p-8"><div className="flex items-center gap-2"><Bell className="h-4.5 w-4.5 text-indigo-600" /><h2 className="text-xl font-black text-slate-950">Latest updates</h2></div><div className="mt-5 grid gap-3 md:grid-cols-2">{notifications.map((notification,index)=><div key={index} className="rounded-2xl bg-slate-50 p-4">{notification.title && <p className="font-bold text-slate-900">{notification.title}</p>}{notification.description && <p className="mt-1 text-sm leading-6 text-slate-600">{notification.description}</p>}</div>)}</div></section>}
+                    {sections.length > 0 && <div className="mt-8 space-y-6">{sections.map((section)=><RenderSection key={`${section.key}-${section.sortOrder}`} section={section} />)}</div>}
+                    {!isOwned && Array.isArray(course.documents) && course.documents.length > 0 && <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-5 sm:p-8"><SectionHeading title="Included documents" subtitle="Documents unlock after a verified purchase." /><div className="grid gap-3 sm:grid-cols-2">{course.documents.map((doc,index)=><DocumentCard key={doc.id || index} doc={doc} index={index} locked />)}</div></section>}
+                    <button onClick={() => router.push("/current-affairs")} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-950"><ArrowLeft className="h-4 w-4" />All Current Affairs</button>
                 </div>
             </main>
-
         </>
     );
+
 }
